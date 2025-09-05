@@ -10,4 +10,4 @@ if __name__ == '__main__':
     contactNoValidator(7392794323)
 
 
-#https://uibakery.io/regex-library/phone-number-python - Code From
+#https://uibakery.io/regex-library/phone-number-python - Part of the code from

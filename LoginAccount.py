@@ -51,7 +51,6 @@ class registerFrame(tk.Frame):
 
         self.contactEntry = tk.Entry(self, font=["Century Gothic", 10],width=30)
         self.contactEntry.grid(row=3, column=1, columnspan=2,padx=(20, 10))
-        # tk.Label(self, text="You have been registered!", fg='#f00',font=["Century Gothic", 10]).grid(row=4, column=1)
 
         cancelButton(self, "Century Gothic", 10,10,backToLRF=lambda: loginRegistrationFrame(self.master,backToMain=self.backToLRF)).grid(row=5, column=0)
 
@@ -79,7 +78,6 @@ class registerFrame(tk.Frame):
                                                       {"username": "TEXT", "password": "TEXT", "email": "TEXT", "contactNo": "TEXT"})
                         passwordHashed = hashing.hashingGiven(password)
                         databaseInsert.insertIntoTable('users', [username, passwordHashed, email, contactNo])
-                        # below is pseudo = some database function would set the value
                         valid = True
                     else:
                         print('ContactNo Failed')
@@ -91,7 +89,7 @@ class registerFrame(tk.Frame):
             print("username exist")
         if valid:
             print("You have been registered")
-            tk.Label(self, text="You have been registered!",bg='#fff', fg='#f00', font=["Century Gothic", 10]).grid(row=4,column=1)
+            tk.Label(self, text="You have been registered!",fg='#f00', font=["Century Gothic", 10]).grid(row=4,column=1)
             Login = tk.Button(self, text="Login",
                               command=lambda: LoginFrame(self.master, self, backToLRF=self.backToLRF),
                               font=["Century Gothic", 10], width=10)
@@ -113,15 +111,9 @@ class LoginFrame(tk.Frame):
         self.backToLRF = backToLRF
         # self.grid(row=0, column=0, padx=10, pady=10)
         self.pack(fill="both", expand=True)
-        for i in range(3):   # say 3 rows
-            self.grid_rowconfigure(i, weight=1)
-        for j in range(3):   # say 3 columns
-            self.grid_columnconfigure(j, weight=1)
 
     def setupLayout(self):
-        # If you dont define other rows i.e-0 and 1 they will have a height of 0 hence the cancel button will be at the top
-        # cButton: cancelButton = cancelButton(self)
-        # cButton.grid(row=2, column=0)
+
         tk.Label(self, text="Username", font=["Century Gothic", 10],
                  width=20).grid(row=0, column=0)
         tk.Label(self, text="Password", font=["Century Gothic", 10],
@@ -147,12 +139,12 @@ class LoginFrame(tk.Frame):
         usernameToValidate = databaseGet.getFromDatabaseValidation("users", passwordHashed,'username', "password")
         print(usernameToValidate)
         if usernameToValidate == username:
-            print("Logged in") #CHANGE
+            print("Logged in")
             if self.backToLRF:
                 self.destroy()
                 self.backToLRF(username)
         else:
-            print("Loggin Failed") #CHANGE
+            print("Loggin Failed")
             tk.Label(self, text="Incorrect Details, Try Again!", font=["Century Gothic", 10]).grid(row=2, column=1,sticky="nsew")
 
 class loginRegistrationFrame(tk.Frame):
@@ -171,8 +163,11 @@ class loginRegistrationFrame(tk.Frame):
         self.rowconfigure(0, weight=1)
         self.columnconfigure(0, weight=1)
         self.columnconfigure(1, weight=1)
+        #toLogin
         tk.Button(self, text="Login", command=lambda: LoginFrame(self.master, self, backToLRF = self.backToMain), font=["Century Gothic", 20],
                   width=10).grid(row=0, column=0, padx=(10, 5), pady=10)
+
+        # toRegistration
         tk.Button(self, text="Register", command=lambda: registerFrame(self.master, self,backToLRF = self.backToMain), font=["Century Gothic", 20],
                   width=10).grid(
             row=0, column=1, padx=(5, 10), pady=10)

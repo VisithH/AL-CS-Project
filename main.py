@@ -1,5 +1,6 @@
 import tkinter as tk
-from ProjectLibrary.LoginAccount import loginRegistrationFrame
+from MusicShifter import musicShifter
+from LoginAccount import loginRegistrationFrame
 
 class mainProgram(tk.Tk):
     def __init__(self):
@@ -8,7 +9,7 @@ class mainProgram(tk.Tk):
         self.title("Music Shifter")
         self.rowconfigure(0, weight=1)
         self.columnconfigure(0, weight=1)
-        self.configure(bg="#ff8000")
+        # self.configure(bg="#ff8000")
         self.loginLaunch()
 
     def loginLaunch(self):
@@ -18,11 +19,12 @@ class mainProgram(tk.Tk):
         self.userInSession = username
         for widget in self.winfo_children():
             widget.destroy()
-        self.Main()
+        self.musicShifterLaunch()
+
+    def musicShifterLaunch(self):
+        musicShifter(self, self.userInSession).pack(expand=True,fill="both")
 
 
-    def Main(self):
-        tk.Label(self, text=f"Welcome, {self.userInSession}").pack(pady=20)
 if __name__ == '__main__':
     x: mainProgram = mainProgram()
     x.mainloop()

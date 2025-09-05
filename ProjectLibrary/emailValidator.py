@@ -1,8 +1,6 @@
 from email_validator import EmailNotValidError
 from email_validator import validate_email
-
 from ProjectLibrary.databaseGet import getFromDatabaseValidation
-
 
 def emailValidator(email):
     try:

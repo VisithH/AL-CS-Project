@@ -4,53 +4,165 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="508df6d7-1df4-4728-b000-72f7425eb098" name="Changes" comment="Init" />
+    <list default="true" id="508df6d7-1df4-4728-b000-72f7425eb098" name="Changes" comment="Fix on LRF - Not going to main">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/MusicShifter.py" beforeDir="false" afterPath="$PROJECT_DIR$/MusicShifter.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ProjectLibrary/LoginAccount.py" beforeDir="false" afterPath="$PROJECT_DIR$/LoginAccount.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ProjectLibrary/contactNoValidator.py" beforeDir="false" afterPath="$PROJECT_DIR$/ProjectLibrary/contactNoValidator.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ProjectLibrary/databaseGet.py" beforeDir="false" afterPath="$PROJECT_DIR$/ProjectLibrary/databaseGet.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ProjectLibrary/emailValidator.py" beforeDir="false" afterPath="$PROJECT_DIR$/ProjectLibrary/emailValidator.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/main.py" beforeDir="false" afterPath="$PROJECT_DIR$/main.py" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Python Script" />
+      </list>
+    </option>
+  </component>
+  <component name="FlaskConsoleOptions" custom-start-script="import sys; print('Python %s on %s' % (sys.version, sys.platform)); sys.path.extend([WORKING_DIR_AND_PYTHON_PATHS])&#10;from flask.cli import ScriptInfo, NoAppException&#10;for module in [&quot;main.py&quot;, &quot;wsgi.py&quot;, &quot;app.py&quot;]:&#10;    try: locals().update(ScriptInfo(app_import_path=module, create_app=None).load_app().make_shell_context()); print(&quot;\nFlask App: %s&quot; % app.import_name); break&#10;    except NoAppException: pass">
+    <envs>
+      <env key="FLASK_APP" value="app" />
+    </envs>
+    <option name="myCustomStartScript" value="import sys; print('Python %s on %s' % (sys.version, sys.platform)); sys.path.extend([WORKING_DIR_AND_PYTHON_PATHS])&#10;from flask.cli import ScriptInfo, NoAppException&#10;for module in [&quot;main.py&quot;, &quot;wsgi.py&quot;, &quot;app.py&quot;]:&#10;    try: locals().update(ScriptInfo(app_import_path=module, create_app=None).load_app().make_shell_context()); print(&quot;\nFlask App: %s&quot; % app.import_name); break&#10;    except NoAppException: pass" />
+    <option name="myEnvs">
+      <map>
+        <entry key="FLASK_APP" value="app" />
+      </map>
+    </option>
+  </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
-  <component name="GitHubPullRequestSearchHistory"><![CDATA[{
-  "lastFilter": {
-    "state": "OPEN",
-    "assignee": "VisithH"
+  <component name="GitHubPullRequestSearchHistory">{
+  &quot;lastFilter&quot;: {
+    &quot;state&quot;: &quot;OPEN&quot;,
+    &quot;assignee&quot;: &quot;VisithH&quot;
   }
-}]]></component>
-  <component name="GithubPullRequestsUISettings"><![CDATA[{
-  "selectedUrlAndAccountId": {
-    "url": "https://github.com/VisithH/AL-CS-Project.git",
-    "accountId": "f58c2ce0-c743-4c65-b610-e73c3f4e824d"
+}</component>
+  <component name="GithubPullRequestsUISettings">{
+  &quot;selectedUrlAndAccountId&quot;: {
+    &quot;url&quot;: &quot;https://github.com/VisithH/AL-CS-Project.git&quot;,
+    &quot;accountId&quot;: &quot;f58c2ce0-c743-4c65-b610-e73c3f4e824d&quot;
   }
-}]]></component>
-  <component name="ProjectColorInfo"><![CDATA[{
-  "associatedIndex": 3
-}]]></component>
+}</component>
+  <component name="ProjectColorInfo">{
+  &quot;associatedIndex&quot;: 3
+}</component>
   <component name="ProjectId" id="2yeAyK8eI7AimZzOnO3LfaGKcV6" />
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "git-widget-placeholder": "main",
-    "last_opened_file_path": "C:/Users/visit/Documents/Education/SFC/AL/CS/AL-CS-Project",
-    "node.js.detected.package.eslint": "true",
-    "node.js.detected.package.tslint": "true",
-    "node.js.selected.package.eslint": "(autodetect)",
-    "node.js.selected.package.tslint": "(autodetect)",
-    "nodejs_package_manager_path": "npm",
-    "vue.rearranger.settings.migration": "true"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;Python..executor&quot;: &quot;Run&quot;,
+    &quot;Python.Hashing.executor&quot;: &quot;Run&quot;,
+    &quot;Python.Login Page.executor&quot;: &quot;Run&quot;,
+    &quot;Python.Login.executor&quot;: &quot;Run&quot;,
+    &quot;Python.LoginAccount.executor&quot;: &quot;Run&quot;,
+    &quot;Python.Main.executor&quot;: &quot;Run&quot;,
+    &quot;Python.Platform Details.executor&quot;: &quot;Run&quot;,
+    &quot;Python.Validation for password.executor&quot;: &quot;Run&quot;,
+    &quot;Python.contactNoValidator.executor&quot;: &quot;Run&quot;,
+    &quot;Python.databaseGet.executor&quot;: &quot;Run&quot;,
+    &quot;Python.databaseInsert.executor&quot;: &quot;Run&quot;,
+    &quot;Python.emailValidator.executor&quot;: &quot;Run&quot;,
+    &quot;Python.main.executor&quot;: &quot;Run&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.git.unshallow&quot;: &quot;true&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;main&quot;,
+    &quot;last_opened_file_path&quot;: &quot;C:/Users/visit/Documents/Education/SFC/AL/CS/AL-CS-Project&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;com.jetbrains.python.configuration.PyActiveSdkModuleConfigurable&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
+  },
+  &quot;keyToStringList&quot;: {
+    &quot;DatabaseDriversLRU&quot;: [
+      &quot;sqlite&quot;
+    ],
+    &quot;com.intellij.ide.scratch.LRUPopupBuilder$1/SQL Dialect&quot;: [
+      &quot;SQLite&quot;
+    ]
   }
-}]]></component>
+}</component>
+  <component name="RecentsManager">
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\visit\Documents\Education\SFC\AL\CS\AL-CS-Project\ProjectLibrary" />
+    </key>
+  </component>
+  <component name="RunManager" selected="Python.Main">
+    <configuration name="Hashing" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
+      <module name="AL-CS-Project" />
+      <option name="ENV_FILES" value="" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/ProjectLibrary" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/ProjectLibrary/Hashing.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
+    <configuration name="Main" type="PythonConfigurationType" factoryName="Python" temporary="true">
+      <module name="AL-CS-Project" />
+      <option name="ENV_FILES" value="" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/ProjectLibrary" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/main.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
+    <list>
+      <item itemvalue="Python.Main" />
+      <item itemvalue="Python.Hashing" />
+    </list>
+    <recent_temporary>
+      <list>
+        <item itemvalue="Python.Main" />
+        <item itemvalue="Python.Hashing" />
+      </list>
+    </recent_temporary>
+  </component>
   <component name="SharedIndexes">
     <attachedChunks>
       <set>
-        <option value="bundled-js-predefined-d6986cc7102b-1632447f56bf-JavaScript-PY-243.25659.43" />
-        <option value="bundled-python-sdk-181015f7ab06-4df51de95216-com.jetbrains.pycharm.pro.sharedIndexes.bundled-PY-243.25659.43" />
+        <option value="bundled-js-predefined-d6986cc7102b-09060db00ec0-JavaScript-PY-251.26927.90" />
+        <option value="bundled-python-sdk-41e8cd69c857-64d779b69b7a-com.jetbrains.pycharm.pro.sharedIndexes.bundled-PY-251.26927.90" />
       </set>
     </attachedChunks>
   </component>
@@ -62,7 +174,34 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1750184919189</updated>
-      <workItem from="1750184920598" duration="605000" />
+      <workItem from="1750184920598" duration="796000" />
+      <workItem from="1751291793250" duration="3612000" />
+      <workItem from="1751637098974" duration="33000" />
+      <workItem from="1751639559246" duration="715000" />
+      <workItem from="1751667969774" duration="557000" />
+      <workItem from="1752063693881" duration="843000" />
+      <workItem from="1752064556676" duration="3037000" />
+      <workItem from="1752231929162" duration="1878000" />
+      <workItem from="1752264974302" duration="749000" />
+      <workItem from="1752669535375" duration="330000" />
+      <workItem from="1752670372616" duration="1170000" />
+      <workItem from="1752786540925" duration="2764000" />
+      <workItem from="1752789515202" duration="1987000" />
+      <workItem from="1752837834910" duration="915000" />
+      <workItem from="1753299881586" duration="967000" />
+      <workItem from="1753301647849" duration="793000" />
+      <workItem from="1753302959409" duration="422000" />
+      <workItem from="1753563342075" duration="77000" />
+      <workItem from="1753563447896" duration="1637000" />
+      <workItem from="1754003318305" duration="287000" />
+      <workItem from="1754676541492" duration="529000" />
+      <workItem from="1754677903737" duration="5809000" />
+      <workItem from="1756930965461" duration="5142000" />
+      <workItem from="1756986272234" duration="6416000" />
+      <workItem from="1757000763839" duration="1233000" />
+      <workItem from="1757017105737" duration="9030000" />
+      <workItem from="1757075181422" duration="2338000" />
+      <workItem from="1757082265667" duration="1543000" />
     </task>
     <task id="LOCAL-00001" summary="Init">
       <option name="closed" value="true" />
@@ -72,14 +211,74 @@
       <option name="project" value="LOCAL" />
       <updated>1750185518620</updated>
     </task>
-    <option name="localTasksCounter" value="2" />
+    <task id="LOCAL-00002" summary="Init">
+      <option name="closed" value="true" />
+      <created>1750185562330</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1750185562330</updated>
+    </task>
+    <task id="LOCAL-00003" summary="Init">
+      <option name="closed" value="true" />
+      <created>1756932943777</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1756932943777</updated>
+    </task>
+    <task id="LOCAL-00004" summary="Changes">
+      <option name="closed" value="true" />
+      <created>1757035188854</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1757035188854</updated>
+    </task>
+    <task id="LOCAL-00005" summary="Fix on LRF - Not going to main">
+      <option name="closed" value="true" />
+      <created>1757077460674</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1757077460674</updated>
+    </task>
+    <option name="localTasksCounter" value="6" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="3" />
   </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
+  </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="Init" />
-    <option name="LAST_COMMIT_MESSAGE" value="Init" />
+    <MESSAGE value="Changes" />
+    <MESSAGE value="Fix on LRF - Not going to main" />
+    <option name="LAST_COMMIT_MESSAGE" value="Fix on LRF - Not going to main" />
+  </component>
+  <component name="com.intellij.coverage.CoverageDataManagerImpl">
+    <SUITE FILE_PATH="coverage/AL_CS_Project$Login_Page.coverage" NAME="Login Page Coverage Results" MODIFIED="1752064130781" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/ProjectLibrary" />
+    <SUITE FILE_PATH="coverage/AL_CS_Project$.coverage" NAME="Login Coverage Results" MODIFIED="1754003555089" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/ProjectLibrary" />
+    <SUITE FILE_PATH="coverage/AL_CS_Project$Platform_Details.coverage" NAME="Platform Details Coverage Results" MODIFIED="1754692671984" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/ProjectLibrary" />
+    <SUITE FILE_PATH="coverage/AL_CS_Project$LoginAccount.coverage" NAME="LoginAccount Coverage Results" MODIFIED="1757020334893" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/ProjectLibrary" />
+    <SUITE FILE_PATH="coverage/AL_CS_Project$contactNoValidator.coverage" NAME="contactNoValidator Coverage Results" MODIFIED="1757001818669" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/ProjectLibrary" />
+    <SUITE FILE_PATH="coverage/AL_CS_Project$Login.coverage" NAME="Login Coverage Results" MODIFIED="1756986548673" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/ProjectLibrary" />
+    <SUITE FILE_PATH="coverage/AL_CS_Project$databaseInsert.coverage" NAME="databaseInsert Coverage Results" MODIFIED="1752064964820" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/ProjectLibrary" />
+    <SUITE FILE_PATH="coverage/AL_CS_Project$Validation_for_password.coverage" NAME="Validation for password Coverage Results" MODIFIED="1754003428035" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/ProjectLibrary" />
+    <SUITE FILE_PATH="coverage/AL_CS_Project$Hashing.coverage" NAME="Hashing Coverage Results" MODIFIED="1754003481319" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/ProjectLibrary" />
+    <SUITE FILE_PATH="coverage/AL_CS_Project$emailValidator.coverage" NAME="emailValidator Coverage Results" MODIFIED="1757034976569" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/ProjectLibrary" />
+    <SUITE FILE_PATH="coverage/AL_CS_Project$main.coverage" NAME="main Coverage Results" MODIFIED="1757035443093" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/AL_CS_Project$Main.coverage" NAME="Main Coverage Results" MODIFIED="1757083761487" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/ProjectLibrary" />
+    <SUITE FILE_PATH="coverage/AL_CS_Project$databaseGet.coverage" NAME="databaseGet Coverage Results" MODIFIED="1757034716931" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/ProjectLibrary" />
   </component>
 </project>

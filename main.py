@@ -20,7 +20,6 @@ class mainProgram(tk.Tk):
             widget.destroy()
         self.Main()
 
-    
 
     def Main(self):
         tk.Label(self, text=f"Welcome, {self.userInSession}").pack(pady=20)

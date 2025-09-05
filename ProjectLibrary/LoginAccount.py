@@ -9,12 +9,12 @@ from ProjectLibrary.passwordValidator import passwordValidator
 
 
 class cancelButton(tk.Button):
-    def __init__(self, frameRef: tk.Frame, font, fontSize, backToLRF=None):
+    def __init__(self, frameRef: tk.Frame, font, fontSize,width, backToLRF=None):
         def Cancel():
             frameRef.destroy()
             if backToLRF:
                 backToLRF()
-        super().__init__(frameRef, text="Cancel", command=Cancel, font=[f"{font}", fontSize])
+        super().__init__(frameRef, text="Cancel", command=Cancel, font=[f"{font}", fontSize],width=width)
 
 class registerFrame(tk.Frame):
     def __init__(self, windowRef: tk.Tk, oldFrame: tk.Frame = None, backToLRF = None):
@@ -53,9 +53,10 @@ class registerFrame(tk.Frame):
         self.contactEntry.grid(row=3, column=1, columnspan=2,padx=(20, 10))
         # tk.Label(self, text="You have been registered!", fg='#f00',font=["Century Gothic", 10]).grid(row=4, column=1)
 
-        cancelButton(self, "Century Gothic", 10,backToLRF=lambda: loginRegistrationFrame(self.master,backToMain=self.backToLRF)).grid(row=5, column=0)
+        cancelButton(self, "Century Gothic", 10,10,backToLRF=lambda: loginRegistrationFrame(self.master,backToMain=self.backToLRF)).grid(row=5, column=0)
 
-        tk.Button(self, text="Submit", command=lambda: self.sumbitButton(), font=["Century Gothic", 10],width=10).grid(row=5, column=2, padx=(0, 35), pady=10)
+        submit = tk.Button(self, text="Submit", command=lambda: self.sumbitButton(), font=["Century Gothic", 10],width=10)
+        submit.grid(row=5, column=2, padx=(0, 25), pady=10)
 
     def sumbitButton(self):
         username: str = self.usernameEntry.get()
@@ -67,9 +68,7 @@ class registerFrame(tk.Frame):
         print(password)
         print(email)
         print(contactNo)
-        usernameToValidate = databaseGet.getFromDatabaseValidation("users", username, "username")
-
-
+        usernameToValidate = databaseGet.getFromDatabaseValidation("users", username, "username",'username')
         passwordValidated = passwordValidator(password)
         valid = False
         if usernameToValidate != username:
@@ -93,8 +92,10 @@ class registerFrame(tk.Frame):
         if valid:
             print("You have been registered")
             tk.Label(self, text="You have been registered!",bg='#fff', fg='#f00', font=["Century Gothic", 10]).grid(row=4,column=1)
-            tk.Button(self, text="Login", command=lambda: LoginFrame(self.master, self), font=["Century Gothic", 10],
-                      width=10).grid(row=4, column=1, padx=(10, 5), pady=10)
+            Login = tk.Button(self, text="Login",
+                              command=lambda: LoginFrame(self.master, self, backToLRF=self.backToLRF),
+                              font=["Century Gothic", 10], width=10)
+            Login.grid(row=5, column=1, padx=(0, 50), pady=10)
         else:
             print("Registration Failed")
             tk.Label(self, text=f"Registration failed!",
@@ -132,7 +133,7 @@ class LoginFrame(tk.Frame):
         self.passwordEntry = tk.Entry(self, font=["Century Gothic", 10], width=30)
         self.passwordEntry.grid(row=1, column=1, columnspan=2, padx=(20, 10))
 
-        cancelButton(self, "Century Gothic", 10,backToLRF=lambda: loginRegistrationFrame(self.master,backToMain=self.backToLRF)).grid(row=3, column=0)
+        cancelButton(self, "Century Gothic", 10,10,backToLRF=lambda: loginRegistrationFrame(self.master,backToMain=self.backToLRF)).grid(row=3, column=0)
 
         tk.Button(self, text="Submit", command=lambda: self.submitButtonClick(), font=["Century Gothic", 10],width=10).grid(row=3, column=2, padx=(0, 35), pady=10)
 
@@ -148,6 +149,7 @@ class LoginFrame(tk.Frame):
         if usernameToValidate == username:
             print("Logged in") #CHANGE
             if self.backToLRF:
+                self.destroy()
                 self.backToLRF(username)
         else:
             print("Loggin Failed") #CHANGE

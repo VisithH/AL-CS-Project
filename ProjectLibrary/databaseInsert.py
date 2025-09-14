@@ -1,7 +1,8 @@
 import sqlite3
 
 def insertIntoTable(tableName: str, data: list[any]) -> bool:
-    dbC = sqlite3.connect("./" + tableName + ".db")
+    dbC = sqlite3.connect("../Databases/"+tableName+".db") #projectLib
+    # dbC = sqlite3.connect("Databases/"+tableName+".db") #mainApps
     try:
         qStr = "INSERT INTO " + tableName + " VALUES("
         for i in range(len(data)):

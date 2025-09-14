@@ -23,6 +23,8 @@ class registerFrame(tk.Frame):
         self.backToLRF = backToLRF
         super().__init__(windowRef)
         self.setupLayout()
+        self.configure(bg="#0d1b2a")
+
         # self.grid(row=0, column=0, padx=10, pady=10)
         self.pack(fill="both", expand=True)
         self.columnconfigure(0, weight=1)
@@ -32,13 +34,13 @@ class registerFrame(tk.Frame):
 
     def setupLayout(self):
         tk.Label(self, text="Username", font=["Century Gothic", 10],
-                  width=20).grid(row=0, column=0)
+                  width=20).grid(row=0, column=0,pady=1,padx=10)
         tk.Label(self, text="Password", font=["Century Gothic", 10],
-                  width=20).grid(row=1, column=0)
+                  width=20).grid(row=1, column=0,pady=1,padx=10)
         tk.Label(self, text="Email", font=["Century Gothic", 10],
-                  width=20).grid(row=2, column=0)
+                  width=20).grid(row=2, column=0,pady=1,padx=10)
         tk.Label(self, text="Contact Number", font=["Century Gothic", 10],
-                  width=20).grid(row=3, column=0)
+                  width=20).grid(row=3, column=0,pady=1,padx=10)
 
         self.usernameEntry = tk.Entry(self, font=["Century Gothic", 10],width=30)
         self.usernameEntry.grid(row=0, column=1, columnspan=2,padx=(20, 10))
@@ -107,6 +109,7 @@ class LoginFrame(tk.Frame):
         if oldFrame is not None:
             oldFrame.destroy()
         super().__init__(windowRef)
+        self.configure(bg="#09353d")
         self.setupLayout()
         self.backToLRF = backToLRF
         # self.grid(row=0, column=0, padx=10, pady=10)
@@ -115,9 +118,9 @@ class LoginFrame(tk.Frame):
     def setupLayout(self):
 
         tk.Label(self, text="Username", font=["Century Gothic", 10],
-                 width=20).grid(row=0, column=0)
+                 width=20).grid(row=0, column=0,padx=10,pady=1)
         tk.Label(self, text="Password", font=["Century Gothic", 10],
-                 width=20).grid(row=1, column=0)
+                 width=20).grid(row=1, column=0,padx=10,pady=1)
 
         self.usernameEntry = tk.Entry(self, font=["Century Gothic", 10], width=30)
         self.usernameEntry.grid(row=0, column=1, columnspan=2, padx=(20, 10))
@@ -145,7 +148,7 @@ class LoginFrame(tk.Frame):
                 self.backToLRF(username)
         else:
             print("Loggin Failed")
-            tk.Label(self, text="Incorrect Details, Try Again!", font=["Century Gothic", 10]).grid(row=2, column=1,sticky="nsew")
+            tk.Label(self, text="Incorrect Details, Try Again!", font=["Century Gothic", 10]).grid(row=2, column=0,columnspan=3,sticky="ew")
 
 class loginRegistrationFrame(tk.Frame):
     def __init__(self, windowRef: tk.Tk, backToMain, oldFrame: tk.Frame = None):

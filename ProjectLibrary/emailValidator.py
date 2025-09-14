@@ -1,13 +1,11 @@
-from email_validator import EmailNotValidError
+# import email_validator
 from email_validator import validate_email
 from ProjectLibrary.databaseGet import getFromDatabaseValidation
 
 def emailValidator(email):
     try:
         valid = validate_email(email)
-        print(email)
         emailToValidate = getFromDatabaseValidation("users", email, "email",'email')
-        print(emailToValidate)
         if emailToValidate != email:
             return valid.email
         else:

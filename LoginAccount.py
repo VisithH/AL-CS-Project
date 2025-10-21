@@ -7,7 +7,6 @@ from ProjectLibrary.contactNoValidator import contactNoValidator
 from ProjectLibrary.emailValidator import emailValidator
 from ProjectLibrary.passwordValidator import passwordValidator
 
-
 class cancelButton(tk.Button):
     def __init__(self, frameRef: tk.Frame, font, fontSize,width, backToLRF=None):
         def Cancel():
@@ -72,7 +71,7 @@ class registerFrame(tk.Frame):
         usernameToValidate = databaseGet.getFromDatabaseValidation("users", username, "username",'username')
         passwordValidated = passwordValidator(password)
         valid = False
-        if usernameToValidate != username:
+        if (usernameToValidate != username) and (passwordValidated == True):
             if passwordValidated == True:
                 if emailValidator(email) != False:
                     if contactNoValidator(contactNo) == True:

@@ -2,7 +2,7 @@ import ProjectLibrary.databaseGenerator as databaseGenerator
 import ProjectLibrary.databaseInsert as databaseInsert
 from spotipy.oauth2 import SpotifyOAuth
 
-def spotifyOauth(username,email):
+def spotify_oauth(username,email):
     databaseGenerator.createTable("spotifyDetails", {"username": "TEXT", "userEmail": "TEXT", "accessToken": "TEXT"})
 
     # Define your credentials and scope

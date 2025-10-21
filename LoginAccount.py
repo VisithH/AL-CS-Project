@@ -22,8 +22,8 @@ class registerFrame(tk.Frame):
         self.backToLRF = backToLRF
         super().__init__(windowRef)
         self.setupLayout()
-        self.configure(bg="#0d1b2a")
-
+        # self.configure(bg="#0d1b2a")
+        self.configure(bg="#09353d")
         # self.grid(row=0, column=0, padx=10, pady=10)
         self.pack(fill="both", expand=True)
         self.columnconfigure(0, weight=1)
@@ -160,8 +160,8 @@ class loginRegistrationFrame(tk.Frame):
         self.update()
 
     def setupLayout(self):
-        self.configure(bg="#ff0000")
-
+        # self.configure(bg="#ff0000")
+        self.configure(bg="#09353d")
         self.rowconfigure(0, weight=1)
         self.columnconfigure(0, weight=1)
         self.columnconfigure(1, weight=1)

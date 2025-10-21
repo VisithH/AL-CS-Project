@@ -1,6 +1,7 @@
 import tkinter as tk
 from MusicShifter import musicShifter
 from LoginAccount import LoginFrame
+from LoginAccount import loginRegistrationFrame
 
 class mainProgram(tk.Tk):
     def __init__(self):
@@ -13,8 +14,8 @@ class mainProgram(tk.Tk):
         self.loginLaunch()
 
     def loginLaunch(self):
-        LoginFrame(self, backToLRF=self.setUserInSession)
-        # loginRegistrationFrame(self, backToMain=self.setUserInSession).pack(expand=True,fill="both")
+        # LoginFrame(self, backToLRF=self.setUserInSession)
+        loginRegistrationFrame(self, backToMain=self.setUserInSession).pack(expand=True,fill="both")
 
     def setUserInSession(self,username):
         self.userInSession = username

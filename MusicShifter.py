@@ -37,6 +37,7 @@ class step_1(ttk.Frame):
     def spotify_sign_in(self):
         try:
             email = databaseGet.getFromDatabaseValidation('users', self.user_in_session, 'email', 'username')
+            print(email)
             spotify_oauth(self.user_in_session, email)
             accessToken = databaseGet.getFromDatabaseValidation('spotifyDetails', email, 'accessToken', 'userEmail')
             print(accessToken)

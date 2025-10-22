@@ -19,5 +19,22 @@ def insertIntoTable(tableName: str, data: list[any]) -> bool:
         dbC.close()
         return False
 
+def modifyField(tableName: str, dataToInsert:str, fieldToModify:str,PrimaryKey, PrimaryKeyValue):
+    try:
+        dbC = sqlite3.connect("../Databases/" + tableName + ".db")  # projectLib
+        # dbC = sqlite3.connect("Databases/"+tableName+".db") #mainApps
+
+        success = dbC.execute(f"UPDATE {tableName} SET {fieldToModify}=? WHERE {PrimaryKey} = ?", [dataToInsert,PrimaryKeyValue])
+        print(success.rowcount)
+        dbC.commit()
+        dbC.close()
+        if success.rowcount > 0:
+            return True
+
+    except Exception as e:
+        print("Error updating the value:", e)
+        return False
+
 if __name__ == "__main__":
-    insertIntoTable('users', ['username', 'password', 'email', 'contactNo'])
+    # insertIntoTable('users', ['username', 'password', 'email', 'contactNo'])
+    modifyField('spotifyDetails', 'Hello', 'userEmail','username','Visith')

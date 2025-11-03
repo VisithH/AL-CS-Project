@@ -1,3 +1,4 @@
+import os
 import sqlite3
 
 def insertIntoTable(tableName: str, data: list[any]) -> bool:
@@ -21,7 +22,11 @@ def insertIntoTable(tableName: str, data: list[any]) -> bool:
 
 def modifyField(tableName: str, dataToInsert:str, fieldToModify:str,PrimaryKey, PrimaryKeyValue):
     try:
-        dbC = sqlite3.connect("../Databases/" + tableName + ".db")  # projectLib
+        base_dir = os.path.dirname(os.path.abspath(__file__))
+        db_path = os.path.join(base_dir, '..', 'Databases', f"{tableName}.db")
+        db_path = os.path.abspath(db_path)
+        dbC = sqlite3.connect(db_path)
+        # dbC = sqlite3.connect("../Databases/" + tableName + ".db")  # projectLib
         # dbC = sqlite3.connect("Databases/"+tableName+".db") #mainApps
 
         success = dbC.execute(f"UPDATE {tableName} SET {fieldToModify}=? WHERE {PrimaryKey} = ?", [dataToInsert,PrimaryKeyValue])

@@ -1,0 +1,50 @@
+import spotipy
+from spotipy.oauth2 import SpotifyOAuth
+from ProjectLibrary.databaseGet import getFromDatabaseValidation
+from ProjectLibrary.Spotify_oauth import spotify_oauth
+
+class spotifyToDeezer:
+    def __init__(self, user):
+        self.user_playlists = None
+        self.user = user
+        self.access_token_spotify = None
+        self.sp = None
+        self.access_token_deezer = None
+        self.main()
+
+    def main(self):
+        self.access_token_spotify = getFromDatabaseValidation('spotifyDetails', self.user, 'accessToken', 'username')
+        spotify_oauth(self.user)
+        self.sp = spotify_oauth(self.user)
+        self.user_playlist_names()
+
+    def display_name(self):
+        me = self.sp.current_user()
+        return me["display_name"]
+
+    def user_playlist_names(self):
+        self.user_playlists = []
+        user_track_names = self.sp.current_user_playlists(50, 0)
+        for user_track_name in user_track_names["items"]:
+            self.user_playlists.append([user_track_name['name'], user_track_name['id']])
+
+        print(self.user_playlists)
+        self.soundcloud_to_spotify()
+
+    def shifterSpotifyToDeezer(self,selectedPlaylist):
+        self.userTracks = self.sp.playlist_items()
+        print(self.userTracks)
+        spotify_tracks = []
+        for item in self.userTracks["items"]:
+            track = item["track"]
+            name = track["name"]
+            artist = track["artists"][0]["name"]
+            spotify_tracks.append([name, artist])
+        results = self.sp.current_user_saved_tracks()
+        for idx, item in enumerate(results['items']):
+            track = item['track']
+            print(idx, track['artists'][0]['name'], " – ", track['name'])
+    def soundcloud_to_spotify(self):
+        pass
+
+x: spotifyToDeezer = spotifyToDeezer('Visith')

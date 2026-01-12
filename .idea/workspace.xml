@@ -4,12 +4,28 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="508df6d7-1df4-4728-b000-72f7425eb098" name="Changes" comment="Fixing Logical errors in Spotify_oauth.py and adding ModifyTable function to databaseInsert.py and Working on MS_Main.py">
+    <list default="true" id="508df6d7-1df4-4728-b000-72f7425eb098" name="Changes" comment="Fixing Logical errors in Spotify_oauth.py and adding ModifyTable function to databaseInsert.py and Working on MS_Main.py&#10;&#10;Adding Docs to the project lib">
+      <change afterPath="$PROJECT_DIR$/ProjectLibrary/.cache-Visith" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ProjectLibrary/soundcloud_oauth.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/bubble chart test v2.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/db test.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Databases/spotifyDetails.db" beforeDir="false" afterPath="$PROJECT_DIR$/Databases/spotifyDetails.db" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Databases/spotifyDetails.db" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Databases/users.db" beforeDir="false" afterPath="$PROJECT_DIR$/Databases/users.db" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/LoginAccount.py" beforeDir="false" afterPath="$PROJECT_DIR$/LoginAccount.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/MS_Main.py" beforeDir="false" afterPath="$PROJECT_DIR$/MS_Main.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/MusicShifter.py" beforeDir="false" afterPath="$PROJECT_DIR$/MusicShifter.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ProjectLibrary/Hashing.py" beforeDir="false" afterPath="$PROJECT_DIR$/ProjectLibrary/Hashing.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ProjectLibrary/Platform Details.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/ProjectLibrary/Spotify_oauth.py" beforeDir="false" afterPath="$PROJECT_DIR$/ProjectLibrary/Spotify_oauth.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ProjectLibrary/contactNoValidator.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/ProjectLibrary/databaseGenerator.py" beforeDir="false" afterPath="$PROJECT_DIR$/ProjectLibrary/databaseGenerator.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ProjectLibrary/databaseGet.py" beforeDir="false" afterPath="$PROJECT_DIR$/ProjectLibrary/databaseGet.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/ProjectLibrary/databaseInsert.py" beforeDir="false" afterPath="$PROJECT_DIR$/ProjectLibrary/databaseInsert.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ProjectLibrary/deezer_oauth.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/ProjectLibrary/emailValidator.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/ProjectLibrary/passwordValidator.py" beforeDir="false" afterPath="$PROJECT_DIR$/ProjectLibrary/passwordValidator.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/main.py" beforeDir="false" afterPath="$PROJECT_DIR$/main.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -19,6 +35,7 @@
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
+        <option value="Jupyter Notebook" />
         <option value="Python Script" />
       </list>
     </option>
@@ -36,6 +53,7 @@
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+    <option name="UPDATE_TYPE" value="REBASE" />
   </component>
   <component name="GitHubPullRequestSearchHistory">{
   &quot;lastFilter&quot;: {
@@ -57,48 +75,57 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;Python..executor&quot;: &quot;Run&quot;,
-    &quot;Python.Hashing.executor&quot;: &quot;Run&quot;,
-    &quot;Python.Login Page.executor&quot;: &quot;Run&quot;,
-    &quot;Python.Login.executor&quot;: &quot;Run&quot;,
-    &quot;Python.LoginAccount.executor&quot;: &quot;Run&quot;,
-    &quot;Python.MS_Main.executor&quot;: &quot;Run&quot;,
-    &quot;Python.Main.executor&quot;: &quot;Run&quot;,
-    &quot;Python.Platform Details.executor&quot;: &quot;Run&quot;,
-    &quot;Python.Spotify_oauth.executor&quot;: &quot;Run&quot;,
-    &quot;Python.Validation for password.executor&quot;: &quot;Run&quot;,
-    &quot;Python.contactNoValidator.executor&quot;: &quot;Run&quot;,
-    &quot;Python.databaseGenerator.executor&quot;: &quot;Run&quot;,
-    &quot;Python.databaseGet.executor&quot;: &quot;Run&quot;,
-    &quot;Python.databaseInsert.executor&quot;: &quot;Run&quot;,
-    &quot;Python.dropdown.executor&quot;: &quot;Run&quot;,
-    &quot;Python.emailValidator.executor&quot;: &quot;Run&quot;,
-    &quot;Python.main.executor&quot;: &quot;Run&quot;,
-    &quot;Python.test.executor&quot;: &quot;Run&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.git.unshallow&quot;: &quot;true&quot;,
-    &quot;git-widget-placeholder&quot;: &quot;main&quot;,
-    &quot;last_opened_file_path&quot;: &quot;C:/Users/visit/Documents/Education/SFC/AL/CS/AL-CS-Project&quot;,
-    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
-    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
-    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
-    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
-    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
-    &quot;settings.editor.selected.configurable&quot;: &quot;com.github.copilot.settings.completions.CompletionsConfigurable&quot;,
-    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "Python..executor": "Run",
+    "Python.Hashing.executor": "Run",
+    "Python.Login Page.executor": "Run",
+    "Python.Login.executor": "Run",
+    "Python.LoginAccount.executor": "Run",
+    "Python.MS_Main.executor": "Run",
+    "Python.Main.executor": "Run",
+    "Python.MusicShifter.executor": "Run",
+    "Python.Platform Details.executor": "Run",
+    "Python.Spotify_oauth.executor": "Run",
+    "Python.Validation for password.executor": "Run",
+    "Python.bubble chart test v2.executor": "Run",
+    "Python.bubble graph test.executor": "Run",
+    "Python.contactNoValidator.executor": "Run",
+    "Python.databaseGenerator.executor": "Run",
+    "Python.databaseGet.executor": "Run",
+    "Python.databaseInsert.executor": "Run",
+    "Python.db test.executor": "Run",
+    "Python.deezer_oauth.executor": "Run",
+    "Python.dropdown.executor": "Run",
+    "Python.emailValidator.executor": "Run",
+    "Python.main.executor": "Run",
+    "Python.soundcloud_oauth.executor": "Run",
+    "Python.test.executor": "Run",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "RunOnceActivity.git.unshallow": "true",
+    "git-widget-placeholder": "main",
+    "last_opened_file_path": "C:/Users/visit/Documents/Education/SFC/AL/CS/AL-CS-Project",
+    "node.js.detected.package.eslint": "true",
+    "node.js.detected.package.tslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.tslint": "(autodetect)",
+    "nodejs_package_manager_path": "npm",
+    "settings.editor.selected.configurable": "com.github.copilot.settings.completions.CompletionsConfigurable",
+    "vue.rearranger.settings.migration": "true"
   },
-  &quot;keyToStringList&quot;: {
-    &quot;DatabaseDriversLRU&quot;: [
-      &quot;sqlite&quot;
+  "keyToStringList": {
+    "DatabaseDriversLRU": [
+      "sqlite"
     ],
-    &quot;com.intellij.ide.scratch.LRUPopupBuilder$1/SQL Dialect&quot;: [
-      &quot;SQLite&quot;
+    "com.intellij.ide.scratch.LRUPopupBuilder$1/SQL Dialect": [
+      "SQLite"
     ]
   }
-}</component>
+}]]></component>
   <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Users\visit\Documents\Education\SFC\AL\CS\AL-CS-Project" />
+    </key>
     <key name="MoveFile.RECENT_KEYS">
       <recent name="C:\Users\visit\Documents\Education\SFC\AL\CS\AL-CS-Project" />
       <recent name="C:\Users\visit\Documents\Education\SFC\AL\CS\AL-CS-Project\unwanted" />
@@ -115,7 +142,7 @@
         <env name="PYTHONUNBUFFERED" value="1" />
       </envs>
       <option name="SDK_HOME" value="" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/ProjectLibrary" />
+      <option name="WORKING_DIRECTORY" value="C:\Users\visit\Documents\Education\SFC\AL\CS\AL-CS-Project" />
       <option name="IS_MODULE_SDK" value="true" />
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
@@ -196,7 +223,35 @@
       <workItem from="1761770661777" duration="1555000" />
       <workItem from="1761858801302" duration="1016000" />
       <workItem from="1762173360186" duration="4401000" />
-      <workItem from="1762179056219" duration="544000" />
+      <workItem from="1762179056219" duration="570000" />
+      <workItem from="1762202963316" duration="1180000" />
+      <workItem from="1762779605811" duration="1443000" />
+      <workItem from="1762788266449" duration="1908000" />
+      <workItem from="1763382793810" duration="416000" />
+      <workItem from="1763390033525" duration="2522000" />
+      <workItem from="1763930793892" duration="674000" />
+      <workItem from="1763988916043" duration="3291000" />
+      <workItem from="1763994876160" duration="3216000" />
+      <workItem from="1764276191290" duration="1499000" />
+      <workItem from="1765055525650" duration="593000" />
+      <workItem from="1765198532382" duration="3556000" />
+      <workItem from="1765204259166" duration="3811000" />
+      <workItem from="1765655552579" duration="476000" />
+      <workItem from="1765802654186" duration="8181000" />
+      <workItem from="1765832445613" duration="905000" />
+      <workItem from="1766429882179" duration="630000" />
+      <workItem from="1766446684295" duration="595000" />
+      <workItem from="1766521458090" duration="1193000" />
+      <workItem from="1766616071998" duration="1020000" />
+      <workItem from="1766681563064" duration="1657000" />
+      <workItem from="1766693907527" duration="1879000" />
+      <workItem from="1766764138975" duration="3738000" />
+      <workItem from="1767299842975" duration="594000" />
+      <workItem from="1767469581494" duration="4263000" />
+      <workItem from="1767476793503" duration="11000" />
+      <workItem from="1767476934228" duration="55000" />
+      <workItem from="1767478034778" duration="125000" />
+      <workItem from="1768224214259" duration="1179000" />
     </task>
     <task id="LOCAL-00001" summary="Init">
       <option name="closed" value="true" />
@@ -278,7 +333,23 @@
       <option name="project" value="LOCAL" />
       <updated>1761130626994</updated>
     </task>
-    <option name="localTasksCounter" value="11" />
+    <task id="LOCAL-00011" summary="Fixing Logical errors in Spotify_oauth.py and adding ModifyTable function to databaseInsert.py and Working on MS_Main.py">
+      <option name="closed" value="true" />
+      <created>1762179614441</created>
+      <option name="number" value="00011" />
+      <option name="presentableId" value="LOCAL-00011" />
+      <option name="project" value="LOCAL" />
+      <updated>1762179614441</updated>
+    </task>
+    <task id="LOCAL-00012" summary="Fixing Logical errors in Spotify_oauth.py and adding ModifyTable function to databaseInsert.py and Working on MS_Main.py&#10;&#10;Adding Docs to the project lib">
+      <option name="closed" value="true" />
+      <created>1762784401048</created>
+      <option name="number" value="00012" />
+      <option name="presentableId" value="LOCAL-00012" />
+      <option name="project" value="LOCAL" />
+      <updated>1762784401048</updated>
+    </task>
+    <option name="localTasksCounter" value="13" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -303,26 +374,41 @@
     <MESSAGE value="Changing the project to Deezer because of the security Issues" />
     <MESSAGE value="Fixing errors on Login and starting MusicShifter algorithm" />
     <MESSAGE value="Fixing Logical errors in Spotify_oauth.py and adding ModifyTable function to databaseInsert.py and Working on MS_Main.py" />
-    <option name="LAST_COMMIT_MESSAGE" value="Fixing Logical errors in Spotify_oauth.py and adding ModifyTable function to databaseInsert.py and Working on MS_Main.py" />
+    <MESSAGE value="Fixing Logical errors in Spotify_oauth.py and adding ModifyTable function to databaseInsert.py and Working on MS_Main.py&#10;&#10;Adding Docs to the project lib" />
+    <option name="LAST_COMMIT_MESSAGE" value="Fixing Logical errors in Spotify_oauth.py and adding ModifyTable function to databaseInsert.py and Working on MS_Main.py&#10;&#10;Adding Docs to the project lib" />
   </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
-    <SUITE FILE_PATH="coverage/AL_CS_Project$Login_Page.coverage" NAME="Login Page Coverage Results" MODIFIED="1752064130781" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/ProjectLibrary" />
+    <SUITE FILE_PATH="coverage/AL_CS_Project$db_test.coverage" NAME="db test Coverage Results" MODIFIED="1767475269011" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
     <SUITE FILE_PATH="coverage/AL_CS_Project$.coverage" NAME="Login Coverage Results" MODIFIED="1754003555089" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/ProjectLibrary" />
     <SUITE FILE_PATH="coverage/AL_CS_Project$Platform_Details.coverage" NAME="Platform Details Coverage Results" MODIFIED="1754692671984" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/ProjectLibrary" />
-    <SUITE FILE_PATH="coverage/AL_CS_Project$MS_Main.coverage" NAME="MS_Main Coverage Results" MODIFIED="1762176984158" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
-    <SUITE FILE_PATH="coverage/AL_CS_Project$dropdown.coverage" NAME="dropdown Coverage Results" MODIFIED="1757966957454" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/AL_CS_Project$deezer_oauth.coverage" NAME="deezer_oauth Coverage Results" MODIFIED="1763997504398" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/ProjectLibrary" />
     <SUITE FILE_PATH="coverage/AL_CS_Project$LoginAccount.coverage" NAME="LoginAccount Coverage Results" MODIFIED="1757020334893" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/ProjectLibrary" />
     <SUITE FILE_PATH="coverage/AL_CS_Project$contactNoValidator.coverage" NAME="contactNoValidator Coverage Results" MODIFIED="1757001818669" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/ProjectLibrary" />
-    <SUITE FILE_PATH="coverage/AL_CS_Project$Login.coverage" NAME="Login Coverage Results" MODIFIED="1756986548673" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/ProjectLibrary" />
-    <SUITE FILE_PATH="coverage/AL_CS_Project$databaseInsert.coverage" NAME="databaseInsert Coverage Results" MODIFIED="1761128371307" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/ProjectLibrary" />
+    <SUITE FILE_PATH="coverage/AL_CS_Project$bubble_chart_test_v2.coverage" NAME="bubble chart test v2 Coverage Results" MODIFIED="1767473304251" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
     <SUITE FILE_PATH="coverage/AL_CS_Project$test.coverage" NAME="test Coverage Results" MODIFIED="1757967844931" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/unwanted" />
     <SUITE FILE_PATH="coverage/AL_CS_Project$Validation_for_password.coverage" NAME="Validation for password Coverage Results" MODIFIED="1754003428035" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/ProjectLibrary" />
     <SUITE FILE_PATH="coverage/AL_CS_Project$Hashing.coverage" NAME="Hashing Coverage Results" MODIFIED="1754003481319" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/ProjectLibrary" />
-    <SUITE FILE_PATH="coverage/AL_CS_Project$emailValidator.coverage" NAME="emailValidator Coverage Results" MODIFIED="1757034976569" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/ProjectLibrary" />
-    <SUITE FILE_PATH="coverage/AL_CS_Project$Spotify_oauth.coverage" NAME="Spotify_oauth Coverage Results" MODIFIED="1762173967318" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/ProjectLibrary" />
-    <SUITE FILE_PATH="coverage/AL_CS_Project$main.coverage" NAME="main Coverage Results" MODIFIED="1762173734506" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
-    <SUITE FILE_PATH="coverage/AL_CS_Project$Main.coverage" NAME="Main Coverage Results" MODIFIED="1761126451943" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/ProjectLibrary" />
-    <SUITE FILE_PATH="coverage/AL_CS_Project$databaseGet.coverage" NAME="databaseGet Coverage Results" MODIFIED="1757034716931" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/ProjectLibrary" />
+    <SUITE FILE_PATH="coverage/AL_CS_Project$Spotify_oauth.coverage" NAME="Spotify_oauth Coverage Results" MODIFIED="1767473774502" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/ProjectLibrary" />
     <SUITE FILE_PATH="coverage/AL_CS_Project$databaseGenerator.coverage" NAME="databaseGenerator Coverage Results" MODIFIED="1757856409113" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/ProjectLibrary" />
+    <SUITE FILE_PATH="coverage/AL_CS_Project$Login_Page.coverage" NAME="Login Page Coverage Results" MODIFIED="1752064130781" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/ProjectLibrary" />
+    <SUITE FILE_PATH="coverage/AL_CS_Project$MS_Main.coverage" NAME="MS_Main Coverage Results" MODIFIED="1768224622267" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/AL_CS_Project$dropdown.coverage" NAME="dropdown Coverage Results" MODIFIED="1757966957454" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/AL_CS_Project$Login.coverage" NAME="Login Coverage Results" MODIFIED="1756986548673" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/ProjectLibrary" />
+    <SUITE FILE_PATH="coverage/AL_CS_Project$databaseInsert.coverage" NAME="databaseInsert Coverage Results" MODIFIED="1761128371307" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/ProjectLibrary" />
+    <SUITE FILE_PATH="coverage/AL_CS_Project$soundcloud_oauth.coverage" NAME="soundcloud_oauth Coverage Results" MODIFIED="1767473279344" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/ProjectLibrary" />
+    <SUITE FILE_PATH="coverage/AL_CS_Project$MusicShifter.coverage" NAME="MusicShifter Coverage Results" MODIFIED="1768224960102" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/AL_CS_Project$emailValidator.coverage" NAME="emailValidator Coverage Results" MODIFIED="1757034976569" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/ProjectLibrary" />
+    <SUITE FILE_PATH="coverage/AL_CS_Project$bubble_graph_test.coverage" NAME="bubble graph test Coverage Results" MODIFIED="1768224759395" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/AL_CS_Project$main.coverage" NAME="main Coverage Results" MODIFIED="1768225043509" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/AL_CS_Project$Main.coverage" NAME="Main Coverage Results" MODIFIED="1768225369819" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="C:\Users\visit\Documents\Education\SFC\AL\CS\AL-CS-Project" />
+    <SUITE FILE_PATH="coverage/AL_CS_Project$databaseGet.coverage" NAME="databaseGet Coverage Results" MODIFIED="1757034716931" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/ProjectLibrary" />
+  </component>
+  <component name="github-copilot-workspace">
+    <instructionFileLocations>
+      <option value=".github/instructions" />
+    </instructionFileLocations>
+    <promptFileLocations>
+      <option value=".github/prompts" />
+    </promptFileLocations>
   </component>
 </project>

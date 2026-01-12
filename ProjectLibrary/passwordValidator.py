@@ -1,4 +1,4 @@
-def passwordValidator(password):
+def password_validator(password):
     if len(password) < 8:
         return False
     if len(password)> 12:
@@ -8,4 +8,4 @@ def passwordValidator(password):
 
 if __name__ == '__main__':
     test = "VisithePass2222"
-    print(passwordValidator(test))
+    print(password_validator(test))

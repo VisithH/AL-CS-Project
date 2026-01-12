@@ -1,9 +1,8 @@
 import tkinter as tk
-from MusicShifter import musicShifter
-from LoginAccount import LoginFrame
-from LoginAccount import loginRegistrationFrame
+from MusicShifter import music_shifter
+from LoginAccount import login_registration_frame
 
-class mainProgram(tk.Tk):
+class main_program(tk.Tk):
     def __init__(self):
         super().__init__()
         self.userInSession = None
@@ -11,22 +10,22 @@ class mainProgram(tk.Tk):
         self.rowconfigure(0, weight=1)
         self.columnconfigure(0, weight=1)
         # self.configure(bg="#ff8000")
-        self.loginLaunch()
+        self.login_launch()
 
-    def loginLaunch(self):
+    def login_launch(self):
         # LoginFrame(self, backToLRF=self.setUserInSession)
-        loginRegistrationFrame(self, backToMain=self.setUserInSession).pack(expand=True,fill="both")
+        login_registration_frame(self, back_to_main=self.set_user_in_session).pack(expand=True, fill="both")
 
-    def setUserInSession(self,username):
+    def set_user_in_session(self, username):
         self.userInSession = username
         for widget in self.winfo_children():
             widget.destroy()
-        self.musicShifterLaunch()
+        self.music_shifter_launch()
 
-    def musicShifterLaunch(self):
-        musicShifter(self, self.userInSession).pack(expand=True,fill="both")
+    def music_shifter_launch(self):
+        music_shifter(self, self.userInSession).pack(expand=True,fill="both")
 
 
 if __name__ == '__main__':
-    x: mainProgram = mainProgram()
+    x: main_program = main_program()
     x.mainloop()

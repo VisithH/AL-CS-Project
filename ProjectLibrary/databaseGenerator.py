@@ -1,19 +1,27 @@
-import os
 import sqlite3
-def createTable(name, rowList):
-    # # For Main apps
-    # # db = sqlite3.connect("Databases/"+name+".db")
-    #
-    # # For ProjectLib Files
-    # db = sqlite3.connect("../Databases/"+name+".db")
-    base_dir = os.path.dirname(os.path.abspath(__file__))
-    db_path = os.path.join(base_dir, '..', 'Databases', f"{name}.db")
-    db_path = os.path.abspath(db_path)
-    db = sqlite3.connect(db_path)
-    db.execute(f"CREATE TABLE IF NOT EXISTS {name} ({', '.join(rowList)})")
-    return True
 
-if __name__ == '__main__':
-    createTable('users',{"username": "TEXT", "password": "TEXT", "email": "TEXT", "contactNo": "TEXT"})
-    # createTable("spotifyDetails", {"username": "TEXT", "userEmail": "TEXT", "accessToken": "TEXT"})
+def create_user_table():
+    db = sqlite3.connect("Databases/users.db")
+    # db = sqlite3.connect("../Databases/users.db")
+    db.execute("CREATE TABLE IF NOT EXISTS users ("
+               "username TEXT UNIQUE,"
+               "password TEXT)")
 
+    db.commit()
+    db.close()
+
+create_user_table()
+
+def create_access_token_table():
+    db = sqlite3.connect("Databases/tokens.db")
+    # db = sqlite3.connect("../Databases/tokens.db")
+    db.execute("CREATE TABLE IF NOT EXISTS tokens ("
+               "username TEXT UNIQUE, " #Linked w user table
+               "spotify_token TEXT, "
+               "soundcloud_token TEXT, "
+               "FOREIGN KEY(username) REFERENCES users(username))")
+
+    db.commit()
+    db.close()
+
+create_access_token_table()

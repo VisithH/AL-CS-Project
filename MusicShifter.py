@@ -2,8 +2,7 @@ import tkinter as tk
 from tkinter import ttk, Button
 from ProjectLibrary import databaseGet
 from ProjectLibrary.Spotify_oauth import spotify_oauth
-from ProjectLibrary.deezer_oauth import deezer_oauth
-from ProjectLibrary.passwordValidator import passwordValidator
+from ProjectLibrary.passwordValidator import password_validator
 
 
 class step_1(ttk.Frame):
@@ -11,7 +10,7 @@ class step_1(ttk.Frame):
         super().__init__(parent)
         self.user_in_session = user_in_session
         # self.configure(bg="#0d1b2a")
-        self.accountSignIn(go_next)
+        self.account_sign_in(go_next)
         # self.account_sign_in_oldtk(go_next)
         self.columnconfigure(0, weight=1)
         self.columnconfigure(1, weight=1)
@@ -21,39 +20,36 @@ class step_1(ttk.Frame):
         tk.Label(self, text=f"Welcome, {self.user_in_session}").grid(row=0, column=1, pady=(6, 0))
         tk.Button(self, text="Spotify Login", command=lambda: self.spotify_sign_in(), font=["Century Gothic", 12],
                   width=15, bg="#b8fce2").grid(row=1, column=1, pady=5)
-        tk.Button(self, text="Deezer Login", command=lambda: self.deezer_sign_in(), font=["Century Gothic", 12],
+        tk.Button(self, text="soundcloud Login", command=lambda: self.soundcloud_sign_in(), font=["Century Gothic", 12],
                   width=15, bg="#fcbeb8").grid(row=2, column=1, pady=5)
         tk.Button(self, text="Next", command=lambda: go_next, font=["Century Gothic", 12],
                   width=15, bg="#fcbeb8").grid(row=3, column=1, pady=5)
 
-    def accountSignIn(self, go_next):
+    def account_sign_in(self, go_next):
         ttk.Label(self, text=f"Welcome, {self.user_in_session}").grid(row=0, column=1, pady=(6, 0))
         tk.Button(self, text="Spotify Login", command=lambda: self.spotify_sign_in(), font=["Century Gothic", 12],
                   width=15, bg="#b8fce2").grid(row=1, column=1, pady=5)
-        tk.Button(self, text="Deezer Login", command=lambda: self.deezer_sign_in(), font=["Century Gothic", 12],
-                  width=15, bg="#fcbeb8").grid(row=4, column=1, pady=5)
+        # tk.Button(self, text="soundcloud Login", command=lambda: self.soundcloud_sign_in(), font=["Century Gothic", 12],
+        #           width=15, bg="#fcbeb8").grid(row=4, column=1, pady=5)
         ttk.Button(self, text="Next", command=go_next, width=15).grid(row=6, column=1, pady=5)
 
     def spotify_sign_in(self):
         try:
-            email = databaseGet.getFromDatabaseValidation('users', self.user_in_session, 'email', 'username')
-            print(email)
-            spotify_oauth(self.user_in_session, email)
-            accessToken = databaseGet.getFromDatabaseValidation('spotifyDetails', email, 'accessToken', 'userEmail')
+            spotify_oauth()
+            accessToken = databaseGet.get_from_database_validation('tokens', self.user_in_session, 'spotify_token', 'username')
             print(accessToken)
             ttk.Label(self, text="Spotify Login is successful").grid(row=3, column=1, pady=(6, 0))
         except:
             ttk.Label(self, text="Unsuccessful attempt, Try Again!").grid(row=3, column=1, pady=(6, 0))
 
-    def deezer_sign_in(self):
-        try:
-            email = databaseGet.getFromDatabaseValidation('users', self.user_in_session, 'email', 'username')
-            deezer_oauth(self.user_in_session, email)
-            accessToken = databaseGet.getFromDatabaseValidation('spotifyDetails', email, 'accessToken', 'userEmail')
-            print(accessToken)
-            ttk.Label(self, text="Deezer Login is successful").grid(row=5, column=1, pady=(6, 0))
-        except:
-            ttk.Label(self, text="Unsuccessful attempt, Try Again!").grid(row=5, column=1, pady=(6, 0))
+    # def soundcloud_sign_in(self):
+    #     try:
+    #         soundcloud_API()
+    #         accessToken = databaseGet.get_from_database_validation('tokens', self.user_in_session, 'soundcloud_token', 'username')
+    #         print(accessToken)
+    #         ttk.Label(self, text="soundcloud Login is successful").grid(row=5, column=1, pady=(6, 0))
+    #     except:
+    #         ttk.Label(self, text="Unsuccessful attempt, Try Again!").grid(row=5, column=1, pady=(6, 0))
 
 
 class step_2(ttk.Frame):
@@ -68,13 +64,12 @@ class step_2(ttk.Frame):
 
     def setup_layout(self, go_next, go_back):
         ttk.Label(self, text="Select one option from below").grid(row=0, column=2, pady=(6, 0))
-        drop_down_options = ['Spotify To Deezer', 'Deezer to Spotify']
+        drop_down_options = ['Spotify To soundcloud', 'soundcloud to Spotify']
         drop_down_from = ttk.Combobox(self, values=drop_down_options)
         drop_down_from.set('Select a platform')
         drop_down_from.grid(row=2, column=2)
         selection = drop_down_from.get()
         ttk.Label(self, text=f"Show selection {selection}").grid(row=3, column=2)
-
         ttk.Button(self, text='Back', command=go_back).grid(row=6, column=1)
         ttk.Button(self, text='Next', command=go_next).grid(row=6, column=3)
 
@@ -89,7 +84,7 @@ class step_3(ttk.Frame):
         ttk.Button(self, text='Back', command=go_back).pack(fill="both")
 
 
-class musicShifter(tk.Frame):
+class music_shifter(tk.Frame):
     def __init__(self, windowRef: tk.Tk, user_in_session):
         super().__init__(windowRef)
         windowRef.geometry("600x300")

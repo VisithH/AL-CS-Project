@@ -1,5 +1,9 @@
 import tkinter as tk
 from tkinter import ttk, Button
+
+from django.contrib.messages import success
+
+# from MS_Main import test
 from ProjectLibrary import databaseGet
 from ProjectLibrary.Spotify_oauth import spotify_oauth
 from ProjectLibrary.passwordValidator import password_validator
@@ -36,7 +40,8 @@ class step_1(ttk.Frame):
     def spotify_sign_in(self):
         try:
             spotify_oauth()
-            accessToken = databaseGet.get_from_database_validation('tokens', self.user_in_session, 'spotify_token', 'username')
+            accessToken = databaseGet.get_from_database_validation('spotify_token', self.user_in_session, 'token',
+                                                                   'username')
             print(accessToken)
             ttk.Label(self, text="Spotify Login is successful").grid(row=3, column=1, pady=(6, 0))
         except:
@@ -55,24 +60,29 @@ class step_1(ttk.Frame):
 class step_2(ttk.Frame):
     def __init__(self, parent, go_next, go_back):
         super().__init__(parent)
-        self.setup_layout(go_next, go_back)
+        self.setup_layout(go_back, go_next)
         self.columnconfigure(0, weight=1)
         self.columnconfigure(1, weight=1)
         self.columnconfigure(2, weight=1)
         self.columnconfigure(3, weight=1)
         self.columnconfigure(4, weight=1)
 
-    def setup_layout(self, go_next, go_back):
-        ttk.Label(self, text="Select one option from below").grid(row=0, column=2, pady=(6, 0))
-        drop_down_options = ['Spotify To soundcloud', 'soundcloud to Spotify']
-        drop_down_from = ttk.Combobox(self, values=drop_down_options)
-        drop_down_from.set('Select a platform')
-        drop_down_from.grid(row=2, column=2)
-        selection = drop_down_from.get()
-        ttk.Label(self, text=f"Show selection {selection}").grid(row=3, column=2)
+    def setup_layout(self,go_back, go_next):
+        self.yt_to_spotify_tick = tk.IntVar()
+        self.spotify_to_yt_tick = tk.IntVar()
+
+        self.yt_to_spoify = ttk.Checkbutton(self, text='Youtube Music to Spotify', variable=self.yt_to_spotify_tick, onvalue=1, offvalue=0).grid(row=4, column=2)
+        self.spotify_to_ytmusic = ttk.Checkbutton(self, text='Spotify to Youtube Music', variable=self.spotify_to_yt_tick, onvalue=1, offvalue=0).grid(row=5, column=2)
         ttk.Button(self, text='Back', command=go_back).grid(row=6, column=1)
+        ttk.Button(self, text='Submit', command=self.submit).grid(row=6, column=2)
         ttk.Button(self, text='Next', command=go_next).grid(row=6, column=3)
 
+    def submit(self):
+        yt_to_spotify = self.yt_to_spotify_tick.get()
+        if yt_to_spotify == 1:
+            print('success')
+        else:
+            print('None')
 
 class step_3(ttk.Frame):
     def __init__(self, parent, go_back):

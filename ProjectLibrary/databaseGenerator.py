@@ -10,18 +10,36 @@ def create_user_table():
     db.commit()
     db.close()
 
-create_user_table()
+# create_user_table()
 
-def create_access_token_table():
-    db = sqlite3.connect("Databases/tokens.db")
-    # db = sqlite3.connect("../Databases/tokens.db")
-    db.execute("CREATE TABLE IF NOT EXISTS tokens ("
+def create_access_spotify_token_table():
+    db = sqlite3.connect("Databases/spotify_token.db")
+    # db = sqlite3.connect("../Databases/spotify_tokens.db")
+    db.execute("CREATE TABLE IF NOT EXISTS spotify_token ("
                "username TEXT UNIQUE, " #Linked w user table
-               "spotify_token TEXT, "
-               "soundcloud_token TEXT, "
+               "token TEXT, "
                "FOREIGN KEY(username) REFERENCES users(username))")
 
     db.commit()
     db.close()
 
-create_access_token_table()
+# create_access_spotify_token_table()
+
+def create_access_youtubemusic_token_table():
+    db = sqlite3.connect("Databases/spotify_token.db")
+    # db = sqlite3.connect("../Databases/youtubemusic_token.db")
+    db.execute("CREATE TABLE IF NOT EXISTS youtubemusic_token ("
+               "username TEXT UNIQUE, " #Linked w user table
+               "access_token TEXT, "
+               "refresh_token TEXT, "
+               "token_uri TEXT, "
+               "client_id TEXT, "
+               "client_secret TEXT, "
+               "scopes TEXT, "
+               "expiry TEXT, "
+               "FOREIGN KEY(username) REFERENCES users(username))")
+
+    db.commit()
+    db.close()
+
+create_access_youtubemusic_token_table()

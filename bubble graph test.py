@@ -1,8 +1,8 @@
 def bubble_graph_return():
     import matplotlib.pyplot as plt
-    from MS_Main import spotify_to_soundcloud
+    from MS_Main import SpotifyToSoundcloud
 
-    x: spotify_to_soundcloud = spotify_to_soundcloud('Visith')
+    x: SpotifyToSoundcloud = SpotifyToSoundcloud('Visith')
     playlist_name = x.spotify_playlist_get()
     track_data = x.playlist_track_get(playlist_name[0][1])
 

@@ -55,7 +55,7 @@ class register_frame(tk.Frame):
         username_to_validate = databaseGet.get_from_database_validation("users", username, "username", 'username')
         password_validated = password_validator(password)
         valid = False
-        if (username_to_validate != username) and (password_validated == True):
+        if username_to_validate != username:
             if password_validated == True:
                 databaseGenerator.create_user_table()
                 password_hashed = hashing.hashing_given(password)

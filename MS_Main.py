@@ -6,17 +6,7 @@ from datetime import datetime
 import spotipy
 from googleapiclient.discovery import build
 from google_auth_oauthlib.flow import InstalledAppFlow
-from google.auth.transport.requests import Request
-import os
-import pickle
-from google_auth_oauthlib.flow import InstalledAppFlow
-from google_auth_oauthlib.helpers import credentials_from_session
-from spotipy.oauth2 import SpotifyOAuth
-from google.oauth2.credentials import Credentials
-
-from ProjectLibrary import databaseGet
 from ProjectLibrary.Spotify_oauth import spotify_oauth
-from ProjectLibrary.databaseInsert import insert_into_table
 
 
 class SpotifyToYtmusic:
@@ -62,47 +52,85 @@ class SpotifyToYtmusic:
         # print(tracks[1]['name'])
         return tracks
 
-    def match_tracks(self, tracks):
-        for track in tracks:
-            score = 0
+    def song_transfer(self):
+        youtube = build("youtube", "v3", developerKey=self.api_key)
 
 class YtmusicToSpotify:
     def __init__(self,user):
         self.user = user
-        self.authenticate()
+        self.sp = spotify_oauth()
+        self.credentials = None
+        self.api_key = "AIzaSyAjAni8t-CJOEHBLwen28iDzTXDprHoOfQ"  # this will be removed later on
+        self.songs = self.song_get('PLACDKnlx5ifC65kxPaABKpB9W4Cty3Uzy')
 
-    def authenticate(self):
+        # state = self.authenticate()
+        # if state == True:
+        #     if self.songs != False:
+        #         pass
+
+    def authenticate(self): # some of these code is relied on google api webpage
         scope = 'https://www.googleapis.com/auth/youtube'
-        file_name = 'ProjectLibrary/token.pickle'
         credentials = None
-        username_exists = databaseGet.get_from_database_validation('youtubemusic_token', self.user, 'username',
-                                                                   'username')
+        flow = InstalledAppFlow.from_client_secrets_file('ProjectLibrary/client_secret.json', scope)
 
-        if username_exists!= None:
-            data = databaseGet.get_from_database_all('youtubemusic_token', self.user, 'username')
-            credentials = Credentials(
-                token = data[0],
-                refresh_token=data[1],
-                token_uri=data[2],
-                client_id=data[3],
-                client_secret=data[4],
-                scopes=json.loads(data[5])
+        self.credentials = flow.run_local_server(port=52736, access_type='offline', prompt='consent')
+
+        # expiry_in_format = credentials.expiry.isoformat()
+
+        # insert_into_table('youtubemusic_token',[self.user, credentials.token, credentials.refresh_token, credentials. token_uri, credentials.client_id,
+        #                                         credentials.client_secret, credentials.scopes, expiry_in_format])
+        print('token is successfully retrieved')
+        return True
+        # songs = self.song_get()
+        # print(songs)
+
+
+    def song_get(self,playlist_id):
+        # try:
+            api_key = "AIzaSyAjAni8t-CJOEHBLwen28iDzTXDprHoOfQ" # will be removed later
+            youtube = build("youtube", "v3", developerKey=api_key)
+
+            request = youtube.playlistItems().list(
+                part = 'snippet',
+                playlistId = playlist_id,
+                maxResults = 100
             )
+            # print(response)
+            response = request.execute()
 
-            credentials.expiry = datetime.fromisoformat(data[6])
+            songs = []
 
-        
+            for song in response['items']:
+                print(song)
+                title = song['snippet']['title']
+                video_id = song['snippet']['resourceId']['videoId']
+                artist_part = song['snippet']['description'].splitlines()[2]
+                print(artist_part)
+                artist = []
+                for word in artist_part.split(' · ')[1: ]:
+                    print(f'word: {word}')
+                    artist.append(word)
+                print(artist)
+                songs.append({'track_title': title, 'artist': artist, 'video_id':video_id})
 
-        if not file_there:
-            flow = InstalledAppFlow.from_client_secrets_file(
-                'ProjectLibrary/client_secret.json', scope
-            )
+            for song in songs:
+                print(song['video_id'])
 
-            credentials = flow.run_local_server(port=52736,
-                                                access_type='offline',
-                                                prompt='consent')
-            insert_into_table('youtubemusic_token',[self.user,credentials.token,credentials.refresh_token,credentials.token_uri,credentials.client_id,
-                                                    credentials.client_secret, json.dumps(credentials.scopes),credentials.expiry.isoformat()])
-            print('Done')
+            print(songs)
+            if not songs:
+                return None
+            else:
+                return songs
+        # except:
+        #     return False
+
+    def song_transfer(self, songs):
+        for song in songs:
+            search_string = f"track:{song['track_title']} artist:{song['artist']}"
+            # results = self.sp.search(q=f"track:{song['track_title']} artist:{song['artist']}", type='track')
+            # print(results)
+            return True
+
+
 # x: SpotifyToYtmusic = SpotifyToYtmusic('Visith')
 y: YtmusicToSpotify = YtmusicToSpotify('Visith')

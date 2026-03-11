@@ -3,26 +3,16 @@ import ProjectLibrary.databaseGenerator as databaseGenerator
 import ProjectLibrary.databaseInsert as databaseInsert
 import ProjectLibrary.Hashing as hashing
 import ProjectLibrary.databaseGet as databaseGet
+from MusicShifter import music_shifter
 from ProjectLibrary.passwordValidator import password_validator
 
-class cancel_button(tk.Button):
-    def __init__(self, frame_ref: tk.Frame, font, font_size, width, back_to_lrf=None):
-        def Cancel():
-            frame_ref.destroy()
-            if back_to_lrf:
-                back_to_lrf()
-        super().__init__(frame_ref, text="Cancel", command=Cancel, font=[f"{font}", font_size], width=width)
-
 class register_frame(tk.Frame):
-    def __init__(self, window_ref: tk.Tk, old_frame: tk.Frame = None, back_to_lrf = None):
+    def __init__(self, window_ref: tk.Tk, old_frame: tk.Frame = None):
         if old_frame is not None:
             old_frame.destroy()
-        self.back_to_lrf = back_to_lrf
         super().__init__(window_ref)
         self.setup_layout()
-        # self.configure(bg="#0d1b2a")
         self.configure(bg="#09353d")
-        # self.grid(row=0, column=0, padx=10, pady=10)
         self.pack(fill="both", expand=True)
         self.columnconfigure(0, weight=1)
         self.columnconfigure(1, weight=1)
@@ -30,10 +20,8 @@ class register_frame(tk.Frame):
         self.rowconfigure(5, weight=1)
 
     def setup_layout(self):
-        tk.Label(self, text="Username", font=["Century Gothic", 10],
-                  width=20).grid(row=0, column=0,pady=1,padx=10)
-        tk.Label(self, text="Password", font=["Century Gothic", 10],
-                  width=20).grid(row=1, column=0,pady=1,padx=10)
+        tk.Label(self, text="Username", font=["Century Gothic", 10], width=20).grid(row=0, column=0,pady=1,padx=10)
+        tk.Label(self, text="Password", font=["Century Gothic", 10], width=20).grid(row=1, column=0,pady=1,padx=10)
 
         self.username_entry = tk.Entry(self, font=["Century Gothic", 10], width=30)
         self.username_entry.grid(row=0, column=1, columnspan=2, padx=(20, 10))
@@ -41,10 +29,18 @@ class register_frame(tk.Frame):
         self.password_entry = tk.Entry(self, font=["Century Gothic", 10], width=30)
         self.password_entry.grid(row=1, column=1, columnspan=2, padx=(20, 10))
 
-        cancel_button(self, "Century Gothic", 10, 10, back_to_lrf=lambda: login_registration_frame(self.master, back_to_main=self.back_to_lrf)).grid(row=5, column=0)
+        tk.Button(self, text="Cancel", command=lambda: self.cancel(), font=["Century Gothic", 10], width=10).grid(row=5, column=0)
 
         submit = tk.Button(self, text="Submit", command=lambda: self.submit_button(), font=["Century Gothic", 10], width=10)
         submit.grid(row=5, column=2, padx=(0, 25), pady=10)
+
+    def cancel(self):
+        widgets = self.winfo_children()
+
+        for widget in widgets:
+            widget.destroy()
+
+        login_registration_frame(self).pack(expand=True,fill="both")
 
     def submit_button(self):
         username: str = self.username_entry.get()
@@ -52,7 +48,7 @@ class register_frame(tk.Frame):
 
         print(username)
         print(password)
-        username_to_validate = databaseGet.get_from_database_validation("users", username, "username", 'username')
+        username_to_validate = databaseGet.get_from_database("users", username, "username", 'username')
         password_validated = password_validator(password)
         valid = False
         if username_to_validate != username:
@@ -81,14 +77,12 @@ class login_frame(tk.Frame):
     username_entry: tk.Entry
     password_entry: tk.Entry
 
-    def __init__(self, window_ref: tk.Tk, old_frame: tk.Frame = None, back_to_lrf=None):
+    def __init__(self, window_ref: tk.Tk, old_frame: tk.Frame = None):
         if old_frame is not None:
             old_frame.destroy()
         super().__init__(window_ref)
         self.configure(bg="#09353d")
         self.setup_layout()
-        self.back_to_lrf = back_to_lrf
-        # self.grid(row=0, column=0, padx=10, pady=10)
         self.pack(fill="both", expand=True)
 
     def setup_layout(self):
@@ -104,52 +98,55 @@ class login_frame(tk.Frame):
         self.password_entry = tk.Entry(self, font=["Century Gothic", 10], width=30)
         self.password_entry.grid(row=1, column=1, columnspan=2, padx=(20, 10))
 
-        cancel_button(self, "Century Gothic", 10, 10, back_to_lrf=lambda: login_registration_frame(self.master, back_to_main=self.back_to_lrf)).grid(row=3, column=0)
+        tk.Button(self, text="Cancel", command=lambda: self.cancel(), font=["Century Gothic", 10], width=10).grid(row=3, column=0)
+        tk.Button(self, text="Submit", command=lambda: self.submit_button(), font=["Century Gothic", 10], width=10).grid(row=3, column=2, padx=(0, 35), pady=10)
+    def cancel(self):
+        widgets = self.winfo_children()
+        print(widgets)
+        for widget in widgets:
+            widget.destroy()
 
-        tk.Button(self, text="Submit", command=lambda: self.submit_button_click(), font=["Century Gothic", 10], width=10).grid(row=3, column=2, padx=(0, 35), pady=10)
+        login_registration_frame(self).pack(expand=True,fill="both")
 
-    def submit_button_click(self):
+    def submit_button(self):
         username: str = self.username_entry.get()
         password: str = self.password_entry.get()
-
-        # print(username)
-        # print(password)
         password_hashed = hashing.hashing_given(password)
-        username_to_validate = databaseGet.get_from_database_validation("users", password_hashed, 'username', "password")
+        username_to_validate = databaseGet.get_from_database("users", password_hashed, 'username', "password")
         print(username_to_validate)
         if username_to_validate == username:
             print("Logged in")
-            if self.back_to_lrf:
-                self.destroy()
-                self.back_to_lrf(username)
+            widgets = self.winfo_children()
+
+            for widget in widgets:
+                widget.destroy()
+
+            music_shifter(self,username).pack(fill="both", expand=True)
+
         else:
-            print("Loggin Failed")
+            print("Login Failed")
             tk.Label(self, text="Incorrect Details, Try Again!", font=["Century Gothic", 10]).grid(row=2, column=0,columnspan=3,sticky="ew")
 
 class login_registration_frame(tk.Frame):
-    def __init__(self, window_ref: tk.Tk, back_to_main, oldFrame: tk.Frame = None):
+    def __init__(self, window_ref: tk.Tk):
         super().__init__(window_ref)
-        self.back_to_main = back_to_main
         self.setup_layout()
         self.config(height=500, width=500)
-        # self.grid(row=0, column=0, padx=10, pady=10)
         self.pack(fill="both", expand=True)
         self.update()
 
     def setup_layout(self):
-        # self.configure(bg="#ff0000")
         self.configure(bg="#09353d")
         self.rowconfigure(0, weight=1)
         self.columnconfigure(0, weight=1)
         self.columnconfigure(1, weight=1)
         #toLogin
-        tk.Button(self, text="Login", command=lambda: login_frame(self.master, self, back_to_lrf= self.back_to_main), font=["Century Gothic", 20],
+        tk.Button(self, text="Login", command=lambda: login_frame(self.master, self), font=["Century Gothic", 20],
                   width=10).grid(row=0, column=0, padx=(10, 5), pady=10)
 
         # toRegistration
-        tk.Button(self, text="Register", command=lambda: register_frame(self.master, self, back_to_lrf= self.back_to_main), font=["Century Gothic", 20],
-                  width=10).grid(
-            row=0, column=1, padx=(5, 10), pady=10)
+        tk.Button(self, text="Register", command=lambda: register_frame(self.master, self), font=["Century Gothic", 20],
+                  width=10).grid(row=0, column=1, padx=(5, 10), pady=10)
 
 
 

@@ -1,7 +1,7 @@
 import os
 import sqlite3
 
-def insert_into_table(table_name: str, data: list[any]) -> bool:
+def insert_into_table(table_name, data):
     # db = sqlite3.connect("../Databases/" + table_name + ".db") #projectLib
     db = sqlite3.connect("Databases/"+table_name+".db") #mainApps
     try:
@@ -20,16 +20,16 @@ def insert_into_table(table_name: str, data: list[any]) -> bool:
         db.close()
         return False
 
-def modify_field(table_name: str, data_to_insert:str, field_to_modify:str, primary_key, primary_key_value):
+def modify_field(table_name, data_to_insert, field_to_modify, data, data_inthere):
     try:
-        base_dir = os.path.dirname(os.path.abspath(__file__))
-        db_path = os.path.join(base_dir, '..', 'Databases', f"{table_name}.db")
-        db_path = os.path.abspath(db_path)
-        db = sqlite3.connect(db_path)
+        # base_dir = os.path.dirname(os.path.abspath(__file__))
+        # db_path = os.path.join(base_dir, '..', 'Databases', f"{table_name}.db")
+        # db_path = os.path.abspath(db_path)
+        # db = sqlite3.connect(db_path)
         # db = sqlite3.connect("../Databases/" + tableName + ".db")  # projectLib
-        # db = sqlite3.connect("Databases/"+tableName+".db") #mainApps
+        db = sqlite3.connect("Databases/"+table_name+".db") #mainApps
 
-        success = db.execute(f"UPDATE {table_name} SET {field_to_modify}=? WHERE {primary_key} = ?", [data_to_insert, primary_key_value])
+        success = db.execute(f"UPDATE {table_name} SET {field_to_modify}=? WHERE {data} = ?", [data_to_insert, data_inthere])
         print(success.rowcount)
         db.commit()
         db.close()

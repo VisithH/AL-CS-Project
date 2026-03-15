@@ -1,7 +1,7 @@
 import sqlite3
 from datetime import datetime
 
-conn = sqlite3.connect('users.db')
+conn = sqlite3.connect('music_shifter.db')
 c = conn.cursor()
 
 # Users table
@@ -37,7 +37,7 @@ import sqlite3
 from datetime import datetime
 
 def add_user(username, email=None, spotify_id=None, soundcloud_id=None):
-    conn = sqlite3.connect('users.db')
+    conn = sqlite3.connect('music_shifter.db')
     c = conn.cursor()
 
     c.execute('''

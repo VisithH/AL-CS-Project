@@ -1,3 +1,4 @@
+import sqlite3
 import tkinter as tk
 import ProjectLibrary.databaseGenerator as databaseGenerator
 import ProjectLibrary.databaseInsert as databaseInsert
@@ -12,6 +13,8 @@ class register_frame(tk.Frame):
             old_frame.destroy()
         super().__init__(window_ref)
         self.setup_layout()
+        self.error_label = tk.Label(self, text="", font=["Century Gothic", 10],bg="#09353d", fg='#FFFFFF')
+        self.error_label.grid(row=4, column=1)
         self.configure(bg="#09353d")
         self.pack(fill="both", expand=True)
         self.columnconfigure(0, weight=1)
@@ -34,6 +37,8 @@ class register_frame(tk.Frame):
         submit = tk.Button(self, text="Submit", command=lambda: self.submit_button(), font=["Century Gothic", 10], width=10)
         submit.grid(row=5, column=2, padx=(0, 25), pady=10)
 
+
+
     def cancel(self):
         widgets = self.winfo_children()
 
@@ -55,23 +60,30 @@ class register_frame(tk.Frame):
             if password_validated == True:
                 databaseGenerator.create_user_table()
                 password_hashed = hashing.hashing_given(password)
-                databaseInsert.insert_into_table('users', [username, password_hashed])
-                valid = True
+
+                valid = databaseInsert.insert_into_table('users', [username, password_hashed])
             else:
                 print('Password Failed')
+                self.error_label.config(text="Password should be 8-12 characters")
+
         else:
+            self.error_label.config(text="Username already exists")
+
             print("username exist")
-        if valid:
+        if valid == None:
+            print('incorrect db name')
+        if valid != False:
             print("You have been registered")
-            tk.Label(self, text="You have been registered!",fg='#f00', font=["Century Gothic", 10]).grid(row=4,column=1)
+            self.error_label.config(text="You have been registered!")
+
             Login = tk.Button(self, text="Login",
-                              command=lambda: login_frame(self.master, self, back_to_lrf=self.back_to_lrf),
+                              command=lambda: login_frame(self.master, self),
                               font=["Century Gothic", 10], width=10)
             Login.grid(row=5, column=1, padx=(0, 50), pady=10)
-        else:
-            print("Registration Failed")
-            tk.Label(self, text=f"Registration failed!",
-                     wraplength=450,justify='center',fg='#f00',font=["Century Gothic", 10]).grid(row=4, columnspan=3)
+        # if valid==False:
+        #     print("Registration Failed")
+        #     self.error_label.config(text="")
+        #     self.error_label.config(text="Registration failed!")
 
 class login_frame(tk.Frame):
     username_entry: tk.Entry
@@ -120,8 +132,8 @@ class login_frame(tk.Frame):
 
             for widget in widgets:
                 widget.destroy()
-
-            music_shifter(self,username).pack(fill="both", expand=True)
+            user_id = databaseGet.get_from_database("users", username, 'user_id', "username")
+            music_shifter(self,user_id).pack(fill="both", expand=True)
 
         else:
             print("Login Failed")

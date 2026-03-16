@@ -6,6 +6,8 @@ import ProjectLibrary.Hashing as hashing
 import ProjectLibrary.databaseGet as databaseGet
 from MusicShifter import music_shifter
 from ProjectLibrary.passwordValidator import password_validator
+from ProjectLibrary.usernameValidator import username_validator
+
 
 class register_frame(tk.Frame):
     def __init__(self, window_ref: tk.Tk, old_frame: tk.Frame = None):
@@ -21,6 +23,7 @@ class register_frame(tk.Frame):
         self.columnconfigure(1, weight=1)
         self.columnconfigure(2, weight=1)
         self.rowconfigure(5, weight=1)
+        self.update()
 
     def setup_layout(self):
         tk.Label(self, text="Username", font=["Century Gothic", 10], width=20).grid(row=0, column=0,pady=1,padx=10)
@@ -52,38 +55,38 @@ class register_frame(tk.Frame):
         password: str = self.password_entry.get()
 
         print(username)
-        print(password)
+        username_validate = username_validator(username)
         username_to_validate = databaseGet.get_from_database("users", username, "username", 'username')
         password_validated = password_validator(password)
         valid = False
-        if username_to_validate != username:
-            if password_validated == True:
-                databaseGenerator.create_user_table()
-                password_hashed = hashing.hashing_given(password)
+        if username_validate == True:
+            if username_to_validate != username:
+                if password_validated == True:
+                    password_hashed = hashing.hashing_given(password)
 
-                valid = databaseInsert.insert_into_table('users', [username, password_hashed])
+                    valid = databaseInsert.insert_into_table('users', [username, password_hashed])
+                else:
+                    print('Password Failed')
+                    self.error_label.config(text="Password should be 8-12 characters")
+
             else:
-                print('Password Failed')
-                self.error_label.config(text="Password should be 8-12 characters")
+                self.error_label.config(text="Username already exists")
+                print("username exist")
+            if valid == None:
+                self.error_label.config(text="Program ran in to an error try again!")
+                print('incorrect db name')
+            if valid != False:
+                print("You have been registered")
+                self.error_label.config(text="You have been registered!")
 
+                Login = tk.Button(self, text="Login",
+                                  command=lambda: login_frame(self.master, self),
+                                  font=["Century Gothic", 10], width=10)
+                Login.grid(row=5, column=1, padx=(0, 50), pady=10)
         else:
-            self.error_label.config(text="Username already exists")
+            self.error_label.config(text="Username should be within 4-8 characters")
+            print('Username Failed')
 
-            print("username exist")
-        if valid == None:
-            print('incorrect db name')
-        if valid != False:
-            print("You have been registered")
-            self.error_label.config(text="You have been registered!")
-
-            Login = tk.Button(self, text="Login",
-                              command=lambda: login_frame(self.master, self),
-                              font=["Century Gothic", 10], width=10)
-            Login.grid(row=5, column=1, padx=(0, 50), pady=10)
-        # if valid==False:
-        #     print("Registration Failed")
-        #     self.error_label.config(text="")
-        #     self.error_label.config(text="Registration failed!")
 
 class login_frame(tk.Frame):
     username_entry: tk.Entry
@@ -96,6 +99,7 @@ class login_frame(tk.Frame):
         self.configure(bg="#09353d")
         self.setup_layout()
         self.pack(fill="both", expand=True)
+        self.update()
 
     def setup_layout(self):
 
@@ -137,7 +141,7 @@ class login_frame(tk.Frame):
 
         else:
             print("Login Failed")
-            tk.Label(self, text="Incorrect Details, Try Again!", font=["Century Gothic", 10]).grid(row=2, column=0,columnspan=3,sticky="ew")
+            tk.Label(self, text="Incorrect Details, Try Again!", font=["Century Gothic", 10]).grid(row=2, column=0,columnspan=3)
 
 class login_registration_frame(tk.Frame):
     def __init__(self, window_ref: tk.Tk):
@@ -145,7 +149,6 @@ class login_registration_frame(tk.Frame):
         self.setup_layout()
         self.config(height=500, width=500)
         self.pack(fill="both", expand=True)
-        self.update()
 
     def setup_layout(self):
         self.configure(bg="#09353d")

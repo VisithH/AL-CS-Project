@@ -7,7 +7,7 @@ from MS_Main import YtmusicToSpotify, SpotifyToYtmusic
 # from MS_Main import test
 from ProjectLibrary import databaseGet
 from ProjectLibrary.Spotify_oauth import spotify_oauth
-from ProjectLibrary.databaseGet import get_from_database
+from ProjectLibrary.databaseGet import get_from_database, get_from_database_everyrow
 from ProjectLibrary.passwordValidator import password_validator
 from ProjectLibrary.youtubemusic_oauth import ytmusic_oauth
 
@@ -31,9 +31,9 @@ class step_1(ttk.Frame):
         username = get_from_database('users',self.user_id,'username','user_id')
         ttk.Label(self, text=f"Welcome, {username}").grid(row=0, column=1, pady=(6, 0))
         tk.Button(self, text="Spotify Login", command=lambda: self.spotify_sign_in(), font=["Century Gothic", 12],
-                  width=15, bg="#b8fce2").grid(row=1, column=1, pady=5)
+                  width=20, bg="#b8fce2").grid(row=1, column=1, pady=5)
         tk.Button(self, text="YouTube Music Login", command=lambda: self.ytmusic_sign_in(), font=["Century Gothic", 12],
-                  width=15, bg="#fcbeb8").grid(row=4, column=1, pady=5)
+                  width=20, bg="#fcbeb8").grid(row=4, column=1, pady=5)
         ttk.Button(self, text="Next", command=go_next, width=15).grid(row=6, column=1, pady=5)
 
     def spotify_sign_in(self):
@@ -72,12 +72,12 @@ class step_2(ttk.Frame):
         self.yt_to_spotify_tick = tk.IntVar()
         self.spotify_to_yt_tick = tk.IntVar()
 
-        ttk.Label(self, text="If you do youtube music -> spotify enter your Youtube Music Playlist ID here").grid(row=0, column=2, pady=(6, 0))
-        ttk.Label(self, text="which is usually followed by https://music.youtube.com/playlist?list=xxx").grid(row=1, column=2, pady=(2, 0))
-        ttk.Label(self, text="Paste the Id represented by xxx").grid(row=2, column=2, pady=(2, 0))
+        ttk.Label(self, text="Select one of the following transfer-way").grid(row=0, column=2, pady=(6, 0))
+        ttk.Label(self, text="After that select the playlist that you wish to transfer and click confirm").grid(row=1, column=2, pady=(2, 0))
+        # ttk.Label(self, text="Paste the Id represented by xxx").grid(row=2, column=2, pady=(2, 0))
 
-        self.playlist_id_entry = tk.Entry(self, font=["Century Gothic", 10], width=40)
-        self.playlist_id_entry.grid(row=3, column=2, pady=(2, 2))
+        # self.playlist_id_entry = tk.Entry(self, font=["Century Gothic", 10], width=40)
+        # self.playlist_id_entry.grid(row=3, column=2, pady=(2, 2))
 
         self.yt_to_spoify = ttk.Checkbutton(self, text='Youtube Music to Spotify', variable=self.yt_to_spotify_tick, onvalue=1, offvalue=0).grid(row=4, column=2, pady=(2, 0))
         self.spotify_to_ytmusic = ttk.Checkbutton(self, text='Spotify to Youtube Music', variable=self.spotify_to_yt_tick, onvalue=1, offvalue=0).grid(row=5, column=2, pady=(2, 0))
@@ -95,34 +95,52 @@ class step_2(ttk.Frame):
         self.label.config(text='')
         yt_to_spotify = self.yt_to_spotify_tick.get()
         spotify_to_yt_tick = self.spotify_to_yt_tick.get()
-        self.playlist_id: str = self.playlist_id_entry.get()
+        # self.playlist_id: str = self.playlist_id_entry.get()
         if spotify_to_yt_tick == 1 and yt_to_spotify == 1:
             self.label.config(text='')
             self.label.config(text="Select only one of the options above")
 
         elif yt_to_spotify == 1:
-            self.yt_to_spotify_tk(self.playlist_id)
+            self.yt_to_spotify_tk()
         elif spotify_to_yt_tick == 1:
             self.submit_button.grid_forget()
-            self.spotify_to_yt_tk(self.playlist_id)
+            self.spotify_to_yt_tk()
         else:
             self.label.config(text='')
             self.label.config(text="Select one of the options above")
             print('None')
 
-    def yt_to_spotify_tk(self, playlist_id):
-        self.songs = YtmusicToSpotify.track_get(self, playlist_id=playlist_id)
-        if self.songs not in (None, False):
-            print('YAAAAYYY')
-            self.label.config(text='')
-            self.label.config(text="Songs have been successfully retrieved!")
-            state = YtmusicToSpotify.song_transfer(self, tracks=self.songs, sp=self.globals.access_token_s)
-            if state != False:
-                self.submit_button.grid_forget()
-                ttk.Label(self, text="Songs have been transferred!").grid(row=8, column=2)
-                ttk.Button(self, text='Next', command=self.go_next).grid(row=6, column=3, pady=(2, 0))
+    def yt_to_spotify_tk(self):
+        YtmusicToSpotify.playlists_get(self, credentials=self.globals.access_token_yt)
+        print(self.playlists)
+        playlists = get_from_database_everyrow('playlists','playlist_name','playlist_id')
 
-                ttk.Label(self, text="You can click next to see your insight").grid(row=9, column=2)
+        self.x = 9
+        self.selected_option_id = []
+
+        for playlist in playlists:
+            self.select_bool = tk.IntVar()
+            self.spoify_to_yt= ttk.Checkbutton(self, text=f'{playlist[0]}', onvalue=1, variable=self.select_bool,
+                                                offvalue=0)
+            self.spoify_to_yt.grid(row=self.x, column=2, pady=(2, 0))
+            print((playlist, self.select_bool))
+            print(f'{playlist},{self.select_bool}')
+            self.selected_option_id.append((playlist[1], self.select_bool))
+            self.x = self.x + 1
+
+        # ttk.Button(self, text='Confirm', command=self.confirm).grid(row=self.x, column=2, pady=(5, 0))
+        # self.songs = YtmusicToSpotify.track_get(self, playlist_id=playlist_id)
+        # if self.songs not in (None, False):
+        #     print('YAAAAYYY')
+        #     self.label.config(text='')
+        #     self.label.config(text="Songs have been successfully retrieved!")
+        #     state = YtmusicToSpotify.song_transfer(self, tracks=self.songs, sp=self.globals.access_token_s)
+        #     if state != False:
+        #         self.submit_button.grid_forget()
+        #         ttk.Label(self, text="Songs have been transferred!").grid(row=8, column=2)
+        #         ttk.Button(self, text='Next', command=self.go_next).grid(row=6, column=3, pady=(2, 0))
+        #
+        #         ttk.Label(self, text="You can click next to see your insight").grid(row=9, column=2)
 
         if self.songs == None:
             self.label.config(text='')
@@ -132,8 +150,11 @@ class step_2(ttk.Frame):
         if self.songs == False:
             self.label.config(text='')
             self.label.config(text='Enter a valid playlist ID')
-    def spotify_to_yt_tk(self, playlist_id):
-        self.playlists = SpotifyToYtmusic.spotify_playlist_get(self,sp=self.globals.access_token_s)
+    def spotify_to_yt_tk(self):
+        playlists_exist = SpotifyToYtmusic.spotify_playlist_get(self,sp=self.globals.access_token_s)
+        if playlists_exist == None:
+            self.label.config(text='No playlists were found in your spotify account')
+        self.playlists = get_from_database_everyrow('playlists','playlist_name','playlist_id','source_platform','Spotify')
         print(self.playlists)
 
         self.x = 9
@@ -166,8 +187,9 @@ class step_2(ttk.Frame):
             print(selection)  # -> selection[0] is name and 1 is id
             self.selected_playlist_id = selection[0][1]
             self.selected_playlist_name = selection[0][0]
-            tracks = SpotifyToYtmusic.playlist_track_get(self, sp=self.globals.access_token_s,
-                                                         playlist=self.selected_playlist_id)
+            SpotifyToYtmusic.playlist_track_get(self, sp=self.globals.access_token_s, playlist=self.selected_playlist_id)
+            tracks = get_from_database_everyrow('tracks','track_name','track_id','playlist_id',self.selected_playlist_id)
+            print('tracks')
             print(tracks)
             transfer = SpotifyToYtmusic.track_transfer(self, credentials=self.globals.access_token_yt,
                                                        playlist_selected=self.selected_playlist_name,
@@ -213,6 +235,7 @@ class music_shifter(tk.Frame):
         self.container = ttk.Frame(self)
         self.container.pack(fill="both", expand=True)
         self.go_to_step1()
+        self.update()
 
     def clear(self):
         widgets = self.container.winfo_children()

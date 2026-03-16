@@ -9,7 +9,7 @@ from django.contrib.messages.api import success
 from googleapiclient.discovery import build
 from google_auth_oauthlib.flow import InstalledAppFlow
 from ProjectLibrary.Spotify_oauth import spotify_oauth
-from ProjectLibrary.databaseGet import get_from_database, get_from_database_keys
+from ProjectLibrary.databaseGet import get_from_database, get_from_database_keys, get_from_database_everyrow
 from ProjectLibrary.databaseInsert import insert_into_table, modify_field
 
 
@@ -33,19 +33,19 @@ class SpotifyToYtmusic:
 
     def spotify_playlist_get(self,sp):
         playlists = sp.current_user_playlists()
-        playlist_names = []
+        playlist_id_return = None
         for playlist in playlists['items']:
-            playlist_names.append([playlist['name'],playlist['id']])
-            print(playlist['name'])
-            # print(playlist['id'])
-        return playlist_names
-        # return self.playlist_track_get(playlist_names[0][1])
+            playlist_id_return = insert_into_table('playlists',[self.user_id, playlist['name'], 'Spotify', playlist['id'],'Youtube Music',playlist['tracks']['total'],None])
+        return playlist_id_return
 
     def playlist_track_get(self,sp,playlist):
         tracks = []
+        self.playlist_id = playlist
         result = sp.playlist_tracks(playlist)
         number_of_tracks=0
-        self.playlist_id = insert_into_table('playlists',[self.user_id,None,'Spotify','Youtube Music',number_of_tracks,None])
+        print(f'printing playlist id: {playlist}')
+
+        # self.playlist_id = modify_field('playlists',number_of_tracks,'number_of_tracks','playlist_id',playlist)
         for track in result['items']:
             number_of_tracks = number_of_tracks + 1
             # The whole thing and the with ['track'] it only gives the data relating to the track and removes the date added and info
@@ -53,26 +53,27 @@ class SpotifyToYtmusic:
             # print('FOLLOWING')
             # print(track['track']['name'])
             # print(track['track']['artists'])
-            artists_data = track['track']['artists']
-            track_id=insert_into_table('tracks',[self.playlist_id,track['track']['name'], None ,track['track']['popularity'],track['track']['explicit'],track['track']['duration_ms'],None,None,None,None])
-            print(f'statusfortrackupdate:{track_id}')
-            artists = []
-            for artist in artists_data:
-                print(artist['name'])
-                artists.append(artist['name'])
-                status = modify_field('tracks', artist['name'], 'artists', 'track_id',track_id)
-                print(f'artistinsert:{status}')
-
             # print(track['track']['duration_ms'])
             # print(track['track']['explicit'])
             # print(track['track']['popularity'])
             # print('END')
+            artists_data = track['track']['artists']
+            track_id=insert_into_table('tracks',[playlist,track['track']['name'], None ,track['track']['popularity'],track['track']['explicit'],track['track']['duration_ms'],None,None,None,None])
+            print(f'statusfortrackupdate:{track_id}')
+            artists_list = []
+            for artist in artists_data:
+                print(artist['name'])
+                artists_list.append(artist['name'])
+
+            artists = " ".join(artists_list)
+            status = modify_field('tracks', artists, 'artists', 'track_id', track_id)
+            print(f'artistinsert: {status}')
             tracks.append({"name": track['track']['name'], "artists": artists,"duration_ms": track['track']['duration_ms'], "explicit": track['track']['explicit'], "popularity": track['track']['popularity']})
 
         # print(f"TEST{tracks[1]['name']}")
         # status = insert_into_table('playlists',[self.user_id,None,'Spotify','Youtube Music',number_of_tracks,None])
 
-        status = modify_field('playlists',number_of_tracks,'number_of_tracks','playlist_id',self.playlist_id)
+        status = modify_field('playlists',number_of_tracks,'number_of_tracks','playlist_id',playlist)
         print(f'insertdatabasestatus: {status}')
         return tracks
 
@@ -103,13 +104,14 @@ class SpotifyToYtmusic:
             success_score = 0
             for track in tracks_given:
                 try:
-                    track_id = get_from_database_keys('tracks', [track['track_title'], self.playlist_id], 'track_id',
-                                                      ['track_name', 'playlist_id'])
-                    print(f'trackid: {track_id}')
-                    print('printing track')
-                    print(track)
-                    artist_line = " ".join(track['artists'])
-                    track_search = f"{track['name']} {artist_line}"
+                    track_id = track[1]
+                    self.track_data = get_from_database_everyrow('tracks', 'track_name', 'artists', 'track_id',track[1])
+                    print(f'track name: {self.track_data[0][0]}')
+                    print(f'track artists: {self.track_data[0][1]}')
+                    # print('printing track')
+                    # print(track)
+                    # artist_line = track['artists']
+                    track_search = f"{self.track_data[0][0]} {self.track_data[0][1]}"
                     search = youtube.search().list(
                         part='snippet',
                         q=track_search,
@@ -145,14 +147,14 @@ class SpotifyToYtmusic:
                     success_score = success_score+1
 
                 except:
-                    failed_tracks.append(f'track_name: {track['name']}, artist: {track['artists']}')
+                    print('didnot transfer')
+                    failed_tracks.append(f'track_name: {self.track_data[0][0]}, artist: {self.track_data[0][1]}')
             status = modify_field('playlists', success_score, 'success_score', 'playlist_id', self.playlist_id)
             # status = insert_into_table('playlists',[self.user_id, playlist_selected, None, None, None, success_score])
             return failed_tracks
         except Exception as e:
             print(f'Error on song transfer: {e}')
             return False
-
 
 class YtmusicToSpotify:
     def __init__(self, user_id):

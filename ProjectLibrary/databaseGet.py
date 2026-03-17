@@ -84,7 +84,40 @@ def get_from_database_everyrow(table_name,data_name,data_id,field,data_passed):
     except Exception as e:
         print(f'coudnt get all the data: {e}')
         return False
+def get_from_database_everyrow_3(table_name,data1,data2,data3):
+    try:
+        # # ProjectLib
+        # db = sqlite3.connect("../Databases/music_shifter.db")
+        # # mainApps
+        db = sqlite3.connect("Databases/music_shifter.db")
 
+        data_requested = db.execute(f"SELECT {data1},{data2},{data3} "
+                                    f"FROM {table_name} ")
+        result = data_requested.fetchall()
+        db.close()
+        try:
+            return result
+        except Exception as e:
+            print(f'coudnt get all the data: {e}')
+            return 'None'
+    except Exception as e:
+        print(f'coudnt get all the data: {e}')
+        return False
+
+# def delete_from_userid(user_id,playlist_id):
+#     try:
+#         # # ProjectLib
+#         # db = sqlite3.connect("../Databases/music_shifter.db")
+#         # # mainApps
+#         db = sqlite3.connect("Databases/music_shifter.db")
+#
+#         db.execute(f"DELETE FROM playlists WHERE user_id={user_id}")
+#         db.execute(f"DELETE FROM tracks WHERE playlist_id={playlist_id}")
+#         db.commit()
+#         db.close()
+#         return True
+#     except:
+#         return False
 if __name__ == '__main__':
     # print(get_from_database_all('user','user1','username'))
     print(get_from_database_everyrow('playlists','playlist_name','playlist_id','source_platform','spotify'))

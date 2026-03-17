@@ -24,7 +24,7 @@ def create_playlists_table():
                "destination_platform TEXT, "
                "number_of_tracks INTEGER, "
                "success_score INTEGER, "
-               "FOREIGN KEY(user_id) REFERENCES users(user_id))")
+               "FOREIGN KEY(user_id) REFERENCES users(user_id) ON DELETE CASCADE)")
 
     db.commit()
     db.close()

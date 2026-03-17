@@ -1,6 +1,6 @@
 from google_auth_oauthlib.flow import InstalledAppFlow
 
-def ytmusic_oauth():  # some of these code is relied on google api webpage
+def ytmusic_oauth():
     try:
         scope = ['https://www.googleapis.com/auth/youtube']
         flow = InstalledAppFlow.from_client_secrets_file('ProjectLibrary/client_secret.json', scope)
